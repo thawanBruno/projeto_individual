@@ -1,0 +1,60 @@
+/*Header site constitucional*/
+*{
+    font-family: Georgia, 'Times New Roman', Times, monospace;
+    color: white;
+}
+
+body{
+    background-color: #101728;
+}
+
+header{
+    margin: 0 auto 50px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1{
+    margin: 0;
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 10px;
+}
+
+header ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    padding: 5px;
+}
+
+header ul li a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+}
+main{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .banner{
+    width: 100%;
+}
+
+main .banner .titulo-btn{
+    width: 30%;
+}
+
+main .banner .titulo-btn h1{
+    color: white;
+    font-size: 65px;
+}
