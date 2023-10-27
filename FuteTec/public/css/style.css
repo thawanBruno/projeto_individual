@@ -1,7 +1,19 @@
 /*Header site constitucional*/
 *{
-    font-family: Georgia, 'Times New Roman', Times, monospace;
+    font-family: Arial, sans-serif;
     color: white;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #101728;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+    background: #101728;
+}
+body::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
 }
 
 body{
@@ -32,6 +44,7 @@ header ul{
 header ul li{
     list-style: none;
     padding: 5px;
+    margin-left: 15px;
 }
 
 header ul li a{
@@ -43,18 +56,80 @@ main{
     margin: 0 auto;
     width: 80%;
     display: flex;
+    flex-direction: column;
+}
+
+main .sessao-padrao{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 12.5vh;
+}
+
+main .sessao{
+    display: flex;
     justify-content: space-between;
 }
 
-main .banner{
-    width: 100%;
-}
-
-main .banner .titulo-btn{
+main .sessao .titulo-btn{
     width: 30%;
 }
 
-main .banner .titulo-btn h1{
+main .sessao .titulo-btn h1{
     color: white;
     font-size: 65px;
+}
+
+main .sessao button{
+    background-image: linear-gradient( to right, #9340FF 50%, #FF3C5F);
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    padding: 15px;
+    width: 150px;
+}
+
+main .idolos{
+    width: 50%;
+}
+
+main .idolos p{
+    font-size: 42px;
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+}
+
+main .sessao1 p{
+    font-size: 52px;
+    text-align: center;
+    font-weight: 800;
+    margin: 0.25 0;
+}
+
+main .sessao1 legend{
+    width: 75%;
+    margin: 0 auto;
+    font-size: 17px;
+    text-align: center;
+    font-weight: 800;
+}
+
+main .sessao2{
+    display: flex;
+    justify-content: space-between;
+}
+
+main .sessao2 .texto{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+main .sessao2 .texto h2{
+    color: #9340FF;
+    font-size: 56px;
+}
+
+main .sessao2 .texto p{
+    font-weight: 800;
 }
