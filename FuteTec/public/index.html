@@ -10,6 +10,15 @@
 </head>
 
 <body>
+
+    <div class="animacao-inicial" id="animacao_inicial">
+        <div>
+            <img src="assets/icon/iconSite.png" width="85" height="85">
+            
+            <h1 style="font-size: 60px;">FuteTec</h1>
+        </div>
+    </div>
+
     <header>
         <h1><img src="assets/icon/iconSite.png" width="50" height="50">
             FuteTec
@@ -267,7 +276,6 @@
         </div>
     </div>
 </body>
-
 </html>
 <script>
     var n = 1;
@@ -290,7 +298,7 @@
         }
     }
 
-    setInterval(mudaValores, 8000)
+    setInterval(mudaValores, 8000);
 
     function cadastro(){
         var caixaLogin = document.getElementById('div_login');
@@ -320,4 +328,17 @@
         popUp.style.display = "none";
     }
 
+    function desvanscerAnimacao(){
+        var animacaoInicial = document.getElementById('animacao_inicial');
+        animacaoInicial.style.opacity = '0';
+    }
+
+    setInterval(desvanscerAnimacao, 5000)
+
+    function fecharAnimacao(){
+        var animacaoInicial = document.getElementById('animacao_inicial');
+        animacaoInicial.style.display = 'none';
+    }
+
+    setInterval(fecharAnimacao, 7000);
 </script>
