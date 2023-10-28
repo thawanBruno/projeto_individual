@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +8,43 @@
     <link rel="shortcut icon" href="assets/icon/iconSite.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <h1><img src="assets/icon/iconSite.png" width="50" height="50">
-        FuteTec
+            FuteTec
         </h1>
 
         <ul>
             <li>
-                <a href="#">
+                <a href="#inicio">
                     Início
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#valores">
                     Valores
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#contato">
                     Contato
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a style="cursor: pointer;" onclick="abrirPopUp()">
                     Login/cadastro
                 </a>
             </li>
         </ul>
     </header>
     <main>
-        <div class="sessao sessao-padrao">
+        <div class="sessao sessao-padrao" id="inicio">
             <div class="titulo-btn">
                 <h1>Conectados pela paixão!</h1>
-                <button><a>Saiba Mais</a></button>
+                <button class="btn-saiba-mais" onclick="abrirPopUp()"><a>Saiba Mais</a></button>
             </div>
-            
+
             <div class="idolos">
                 <img src="assets/images/idolos.png" width="100%" style="border-bottom: solid white 3px;">
                 <p>
@@ -51,24 +53,271 @@
             </div>
         </div>
         <div class="sessao1 sessao-padrao">
-            <p>O <b style="color: #9340FF; font-family: Arial, Helvetica, sans-serif;">FuteTec</b> é uma rede social<br> onde demostramos o<br> orgulho e a paixão pelo <br>time do coração</p>
+            <p>O <b style="color: #9340FF; font-family: Arial, Helvetica, sans-serif;">FuteTec</b> é uma rede social<br>
+                onde demostramos o<br> orgulho e a paixão pelo <br>time do coração</p>
 
             <legend>
-                Nossa rede social foi feita para expor a nossa dedicação ao time e também debater de forma amistosa sobre o futebol!!!
+                Nossa rede social foi feita para expor a nossa dedicação ao time e também debater de forma amistosa
+                sobre o futebol!!!
             </legend>
         </div>
         <div class="sessao2 sessao-padrao">
             <div class="texto">
-                <h2>
+                <h2 class="sub-titulo">
                     Prezamos o respeito entre os rivais
                 </h2>
                 <p>
-                    A rivalidade é importante, porém é importante que haja respeito para que haja uma boa convivência e espaço para evolução entre os times e suas respectivas torcidas.
+                    A rivalidade é importante, porém é importante que haja respeito para que haja uma boa convivência e
+                    espaço para evolução entre os times e suas respectivas torcidas.
                 </p>
             </div>
 
-            <img src="https://portalmorada.com.br/wp-content/uploads/2022/01/torcss.jpg" style="width: 45%; border-radius: 25px;">
+            <img src="https://portalmorada.com.br/wp-content/uploads/2022/01/torcss.jpg"
+                style="width: 45%; border-radius: 25px;">
+        </div>
+        <div class="sessao3 sessao-padrao">
+            <div class="texto">
+                <h2 class="sub-titulo">
+                    Torne a sua torcida a maior do Brasil!!!
+                </h2>
+                <button class="btn-saiba-mais" onclick="abrirPopUp()">Saiba Mais</button>
+            </div>
+            <div class="texto" style="margin-top: 35px;">
+                <p>
+                    Dentro da nossa rede social existe um evento que irá eleger a maior torcida do Brasil durante a
+                    temporada e concorrer ao troféu FuteTec
+                    <br><br>
+                    Não fique de fora venha já tornar a sua torcida a maior!
+                </p>
+            </div>
+        </div>
+        <div class="sessao4 sessao-padrao" id="valores">
+            <h1 style="margin-bottom: 50px;">Valores</h1>
+            <div class="valores" id="valores1">
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                        <g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path d="M19.5 12.572L12 20l-7.5-7.428A5 5 0 1 1 12 6.006a5 5 0 1 1 7.5 6.572" />
+                            <path
+                                d="M12 6L8.707 9.293a1 1 0 0 0 0 1.414l.543.543c.69.69 1.81.69 2.5 0l1-1a3.182 3.182 0 0 1 4.5 0l2.25 2.25m-7 3l2 2M15 13l2 2" />
+                        </g>
+                    </svg>
+
+                    <h3>Fair Play</h3>
+                    <p>
+                        Apesar de abrirmos
+                        o espaço para debates
+                        esperamos de cada
+                        um é respeito
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="assets/icon/balance-scale.svg">
+
+                    <h3>Honestidade</h3>
+                    <p>
+                        Promovemos a honestidade tanto no jogo, jogando de acordo com as regras, quanto fora do campo
+                    </p>
+                </div>
+                <div class="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                        <path fill="white"
+                            d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z" />
+                    </svg>
+
+                    <h3>Paixão</h3>
+
+                    <p>
+                        Compartilhamos a paixão pelo futebol e a emoção que o esporte proporciona
+                    </p>
+                </div>
+            </div>
+            <div class="valores" id="valores2">
+                <div class="card">
+                    <img src="assets/icon/users.svg">
+
+                    <h3>Responsabilidade</h3>
+
+                    <p>
+                        Acreditamos no poder do futebol como uma ferramenta para promover a responsabilidade social
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="assets/icon/espiritoDeEquipe.png" width="55" height="50">
+
+                    <h3>Espirito de Equipe</h3>
+
+                    <p>
+                        Valorizamos a importância da colaboração e do trabalho em equipe como elementos essenciais
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="assets/icon/punch.svg">
+
+                    <h3>Determinação</h3>
+
+                    <p>
+                        Celebramos a determinação e a persistência dos torcedores diante dos desafios
+                    </p>
+                </div>
+            </div>
+        </div>
         </div>
     </main>
+    <footer id="contato">
+        <div class="logo-redes">
+            <a href="#inicio" style="text-decoration: none;">
+                <img src="assets/icon/iconSite.png" width="100">
+                FuteTec
+            </a>
+            <ul>
+                <img src="assets/icon/linkedin.svg" width="38">
+                <img src="assets/icon/instagram-line.svg" width="35">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 24 24">
+                    <path fill="white"
+                        d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5Z" />
+                </svg>
+                <img src="assets/icon/whatsapp-fill.svg" width="35">
+
+            </ul>
+        </div>
+        <div class="logo-redes">
+            <h2>
+                Fale Conosco
+            </h2>
+            <p>
+                (81) 99286-6224<br>
+                Rua haddock Lobo, 123, Consolação<br>
+                thawan.rodrigues@sptech.school
+            </p>
+        </div>
+    </footer>
+
+    <div class="bkg-login" id="popup_log_cad" style="display: none;">
+        <div class="login-cadastro">
+            <div class="login" id="div_login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" onclick="fecharPopUp()" viewBox="0 0 24 24" style="position: absolute; left: 85%; top: 3%; cursor: pointer;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m7 7l10 10M7 17L17 7"/></svg>
+                <h1 style="font-size: 40px; margin: 20px 0">
+                    Login
+                </h1>
+                <br><br>
+                <form>
+                    <div class="caixa">
+                        <img src="assets/icon/user-light.svg" width="25">
+                        <input type="text" class="caixa-texto" id="nome-user" placeholder="User" required>
+                    </div>
+                    <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><g fill="none" stroke="white"><path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/><path stroke-linejoin="round" d="M5 10h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path stroke-linejoin="round" stroke-width="1.5" d="M14.5 15.5h.01v.01h-.01z"/></g></svg>
+                        <input type="password" class="caixa-texto" id="senha-user" placeholder="Senha" required>
+                    </div>
+                    <div class="cadastro-eqc-senha">
+                        <a onclick="cadastro()">
+                            Cadastra-se
+                        </a>
+                        <a>
+                            Esqueceu a Senha
+                        </a>
+                    </div>
+                    <button class="btn-login">
+                        Fazer Login
+                    </button>
+                </form>
+            </div>
+            <div class="cadastro" id="div_cadastro">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" onclick="fecharPopUp()" viewBox="0 0 24 24" style="position: absolute; left: 85%; top: 3%; cursor: pointer;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m7 7l10 10M7 17L17 7"/></svg>
+                <h1 style="font-size: 40px; margin: 20px 0">
+                    cadastro
+                </h1>
+                <form>
+                    <div class="caixa">
+                        <img src="assets/icon/user-light.svg" width="25">
+                        <input type="text" class="caixa-texto" id="nome-cadastro" placeholder="User" required>
+                    </div>
+                    <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="white" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm3.519 0L12 11.671L18.481 6H5.52zM20 7.329l-7.341 6.424a1 1 0 0 1-1.318 0L4 7.329V18h16V7.329z"/></svg>
+                        <input type="email" class="caixa-texto" id="email-cadastro" placeholder="Email" required>
+                    </div>
+                    <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><g fill="none" stroke="white"><path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/><path stroke-linejoin="round" d="M5 10h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path stroke-linejoin="round" stroke-width="1.5" d="M14.5 15.5h.01v.01h-.01z"/></g></svg>
+                        
+                        <input type="password" class="caixa-texto" id="senha-cadastro" placeholder="Senha" required>
+                    </div>
+                    <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><g fill="none" stroke="white"><path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/><path stroke-linejoin="round" d="M5 10h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path stroke-linejoin="round" stroke-width="1.5" d="M14.5 15.5h.01v.01h-.01z"/></g></svg>
+                        
+                        <input type="password" class="caixa-texto" id="repetir-senha-cadastro" placeholder="Senha" required>
+                    </div>
+                    <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        
+                        <input type="date" style="width: 220px;" class="caixa-texto" id="senha-cadastro"  required>
+                    </div>
+
+                    <div class="cadastro-eqc-senha">
+                        <a onclick="login()">
+                            Fazer Login
+                        </a>
+                    </div>
+
+                    <button class="btn-login" style="background-color: #9340FF; margin-top: 10px;">
+                        Fazer Cadastro
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+<script>
+    var n = 1;
+
+    function mudaValores() {
+        var cards1 = document.getElementById('valores1');
+
+
+        if (n == 1) {
+            cards1.style.transition = '2s';
+            cards1.style.opacity = '0';
+            cards1.style.marginBottom = '-250px';
+            n = 0;
+
+        } else if (n == 0) {
+            cards1.style.marginBottom = '1px';
+            cards1.style.opacity = '1';
+
+            n = 1;
+        }
+    }
+
+    setInterval(mudaValores, 8000)
+
+    function cadastro(){
+        var caixaLogin = document.getElementById('div_login');
+        var caixaCadastro = document.getElementById('div_cadastro');
+
+        caixaCadastro.style.transform = 'translatey(-100%)';
+        caixaLogin.style.transform = 'translateY(-100%)';
+    }
+    
+    function login(){
+        var caixaLogin = document.getElementById('div_login');
+        var caixaCadastro = document.getElementById('div_cadastro');
+
+        caixaCadastro.style.transform = 'translatey(0%)';
+        caixaLogin.style.transform = 'translateY(0%)';
+    }
+
+    function abrirPopUp(){
+        var popUp = document.getElementById('popup_log_cad');
+
+        popUp.style.display = "flex";
+    }
+
+    function fecharPopUp(){
+        var popUp = document.getElementById('popup_log_cad');
+
+        popUp.style.display = "none";
+    }
+
+</script>

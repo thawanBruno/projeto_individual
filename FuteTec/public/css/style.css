@@ -22,7 +22,7 @@ body{
 
 header{
     margin: 0 auto 50px;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
 }
@@ -54,7 +54,7 @@ header ul li a{
 }
 main{
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -62,7 +62,7 @@ main{
 main .sessao-padrao{
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 12.5vh;
+    margin-bottom: 17vh;
 }
 
 main .sessao{
@@ -79,15 +79,15 @@ main .sessao .titulo-btn h1{
     font-size: 65px;
 }
 
-main .sessao button{
+.btn-saiba-mais{
     background-image: linear-gradient( to right, #9340FF 50%, #FF3C5F);
-    border-radius: 20px;
+    border-radius: 30px;
     font-size: 20px;
     border: none;
     padding: 15px;
     width: 150px;
+    cursor: pointer;
 }
-
 main .idolos{
     width: 50%;
 }
@@ -125,11 +125,196 @@ main .sessao2 .texto{
     flex-direction: column;
 }
 
-main .sessao2 .texto h2{
+h2.sub-titulo{
     color: #9340FF;
     font-size: 56px;
 }
 
 main .sessao2 .texto p{
     font-weight: 800;
+}
+
+main .sessao3{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+main .sessao3 .texto{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+main .sessao3 .texto p {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+main .sessao4{
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    overflow: hidden;
+    height: 360px;
+}
+
+main .sessao4 .valores{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+}
+
+.card p{
+    text-align: center;
+    font-size: 18px;
+}
+
+footer{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .logo-redes{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+}
+
+footer .logo-redes a{
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+footer .logo-redes ul{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin-left: -75px;
+}
+
+footer .logo-redes h2{
+    color: #9340FF;
+    font-size: 40px;
+    margin: 30px 0 10px;
+}
+
+footer .logo-redes p{
+    text-align: right;
+    font-weight: 800;
+}
+
+.bkg-login{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000003b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+
+.login-cadastro{
+    background-color: #9340FF;
+    width: 25vw;
+    height: 75vh;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.login{
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    background-color: #9340FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 2s;
+}
+
+.cadastro{
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    background-color: #FF3C5F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 2s;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+}
+
+
+.caixa{
+    background-color: #101728;
+    display: flex;
+    justify-content: start;
+    border: solid white 1px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.caixa-texto{
+    background-color: #101728;
+    font-size: 17.5px;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.caixa-texto::placeholder{
+    color: white;
+}
+
+.cadastro-eqc-senha{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.cadastro-eqc-senha a{
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-login{
+    background-color: #FF3C5F;
+    border-radius: 30px;
+    font-size: 20px;
+    border: none;
+    padding: 15px;
+    width: 200px;
+    cursor: pointer;
 }
