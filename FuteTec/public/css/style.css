@@ -1,7 +1,10 @@
-/*Header site constitucional*/
 *{
     font-family: Arial, sans-serif;
     color: white;
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar-track {
