@@ -169,9 +169,17 @@ main{
 }
 
 .comentario{
-    clip-path: polygon(18% 0, 100% 0, 100% 34%, 100% 67%, 17% 67%, 17% 19%, 10% 10%);
-    width: 80%;
+    padding: 5px;
+    width: fit-content;
+    max-width: 80%;
     background-color: #40465A;
+    border-radius: 15px;
+    font-size: 15px;
+}
+
+.comentario h2{
+    font-size: 20px;
+    margin: 0;
 }
 
 form{
