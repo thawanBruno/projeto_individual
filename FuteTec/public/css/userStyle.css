@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+}
+header{
+    z-index: 3;
+}
+.header-user{
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+    background-image: url(https://i0.statig.com.br/bancodeimagens/6s/3l/jx/6s3ljxqmoe5e0zeyl10audyce.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    z-index: 2;
+}
+
+
+.blur-escuro{
+    background-color: #00000079;
+    backdrop-filter: blur(3px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.blur-escuro ul{
+    width: 280px;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+
+.blur-escuro ul li{
+    padding: 5px;
+    display: inline-block;
+    list-style: none;
+    color: white;
+    text-align: center;
+}
+
+.blur-escuro ul li p{
+    margin: 0;
+}
+
+.elipse-perfil{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 4px white solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-perfil{
+    border-radius: 100px;
+    border: solid white 1px;
+}
+
+button.seguir{
+    background-color: #00000000;
+    border-radius: 30px;
+    font-size: 20px;
+    border: 1px solid white;
+    padding: 5px;
+    width: 150px;
+    cursor: pointer;
+    margin-bottom: -20px;
+}
+
+main{
+    margin-top: 30px;
+}
+
+.caixa-comentario{ 
+    z-index: 0;
+}
+
+.grafico-evento{
+    z-index: 0;
+    opacity: 0.1;
+    transition: 1s;
+}
+
+.grafico-evento:hover{
+    opacity: 1;
+}
