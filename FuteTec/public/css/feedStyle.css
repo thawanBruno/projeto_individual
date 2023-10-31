@@ -168,18 +168,42 @@ main{
     border-radius: 25px;
 }
 
-.comentario{
+.comentario-outros{
     padding: 5px;
     width: fit-content;
     max-width: 80%;
     background-color: #40465A;
     border-radius: 15px;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
-.comentario h2{
+.comentario-eu{
+    padding: 5px;
+    width: fit-content;
+    max-width: 80%;
+    background-color: #40465A;
+    border-radius: 15px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: 20px;
+    text-align: right;
+
+}
+
+.comentario-outros h2{
+    width: 100%;
     font-size: 20px;
     margin: 0;
+    text-align: left;
+}
+
+.comentario-eu h2{
+    width: 100%;
+    font-size: 20px;
+    margin: 0;
+    text-align: right;
 }
 
 form{
@@ -206,4 +230,11 @@ form input{
 form button{
     background-color: #10172800;
     border: none;
+}
+
+.grafico-evento{
+    position: fixed;
+    top: 60%;
+    left: 65%;
+    width: 30%;
 }
