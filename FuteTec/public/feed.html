@@ -6,6 +6,7 @@
     <title>FuteTec</title>
     <link rel="stylesheet" href="css/feedStyle.css">
     <link rel="shortcut icon" href="assets/icon/iconSite.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/notificacaoStyle.css">
 </head>
 <body>
     <main>
@@ -118,6 +119,30 @@
         <div class="grafico-evento">
             <canvas id="myChart" height="190"></canvas>
         </div>
+        <div class="notificacao" id="caixa_notificacao">
+            <div class="uma-ntfc">
+                <div class="img-ntfc">
+                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"  class="ntfc-img-usuario">
+                </div>
+                <div class="conteudo-ntfc">
+                    <h2>Nome do Usuário</h2>
+                    <p>
+                        Curtiu Seu Post
+                    </p>
+                </div>
+            </div>
+            <div class="uma-ntfc">
+                <div class="img-ntfc">
+                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="ntfc-img-usuario">
+                </div>
+                <div class="conteudo-ntfc">
+                    <h2>Nome do Usuário</h2>
+                    <p>
+                        Curtiu Seu Post
+                    </p>
+                </div>
+            </div>
+        </div>
     </main>
     <header>
         <h1>
@@ -138,7 +163,7 @@
             </li>
             <li>
                 <a>
-                    <img src="assets/icon/notification-line.svg">
+                    <img onclick="verificarNoticacao()" src="assets/icon/notification-line.svg">
                 </a>
             </li>
             <li>
@@ -215,6 +240,18 @@ new Chart(ctx, {
         }
   }
 });
+    </script>
+    <script>
+
+        function verificarNoticacao(){
+            var notificacao = document.getElementById("caixa_notificacao");
+
+            if(notificacao.style.display == "none"){
+                notificacao.style.display = "flex";
+            } else{
+                notificacao.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>

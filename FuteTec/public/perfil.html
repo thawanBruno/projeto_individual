@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="assets/icon/iconSite.png" type="image/x-icon">
     <link rel="stylesheet" href="css/feedStyle.css">
     <link rel="stylesheet" href="css/userStyle.css">
+    <link rel="stylesheet" href="css/notificacaoStyle.css">
 </head>
 <body>
     <div class="caixa-comentario">
@@ -146,6 +147,29 @@
                 <img src="https://i0.statig.com.br/bancodeimagens/6s/3l/jx/6s3ljxqmoe5e0zeyl10audyce.jpg" class="img-conteudo">
             </div>
         </div>
+        <div class="notificacao" id="caixa_notificacao" style="z-index: 5;">
+            <div class="uma-ntfc">
+                <div class="img-ntfc">
+                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"  class="ntfc-img-usuario">
+                </div>
+                <div class="conteudo-ntfc">
+                    <h2>Nome do Usuário</h2>
+                    <p>
+                        Curtiu Seu Post
+                    </p>
+                </div>
+            </div>
+            <div class="uma-ntfc">
+                <div class="img-ntfc">
+                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg" class="ntfc-img-usuario">
+                </div>
+                <div class="conteudo-ntfc">
+                    <h2>Nome do Usuário</h2>
+                    <p>
+                        Curtiu Seu Post
+                    </p>
+                </div>
+            </div>
     </main> 
     <header>
         <h1>
@@ -165,7 +189,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a onclick="verificarNotificacao()">
                     <img src="assets/icon/notification-line.svg">
                 </a>
             </li>
@@ -243,6 +267,18 @@ new Chart(ctx, {
         }
   }
 });
+    </script>
+    <script>
+
+        function verificarNotificacao(){
+            var notificacao = document.getElementById("caixa_notificacao");
+
+            if(notificacao.style.display == "none"){
+                notificacao.style.display = "flex";
+            } else{
+                notificacao.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
