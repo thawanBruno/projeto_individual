@@ -1,0 +1,93 @@
+main{
+    margin: 100px auto 0;
+    width: 85%;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+}
+
+.acoes-perfil{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 25%;
+}
+
+.elipse-perfil{
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 4px white solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editar-foto{
+    position: static;
+    width: 90%;
+    height: 90%;
+    background-color: #000000a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    opacity: 0;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.editar-foto:hover{
+    opacity: 1;
+}
+
+.imagem-perfil{
+    border-radius: 100px;
+    margin-right: -90%;
+    border: solid white 1px;
+}
+
+.acoes-perfil button{
+    background-color: #00000000;
+    border-radius: 30px;
+    font-size: 20px;
+    border: 1px solid white;
+    padding: 5px;
+    width: 80%;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.opcoes-de-mudanca{
+    width: 70%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+    border: none;
+    width: 80%;
+    flex-direction: column;
+}
+
+form h2{
+    width: 87%;
+    text-align: left;
+    margin: 20px 0;
+}
+
+form input{
+    font-size: 20px;
+    padding: 5px;
+    border: 1px white solid;
+    border-radius: 25px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.8) brightness(100%) sepia(100%) saturate(0%) hue-rotate(240deg);
+  }
