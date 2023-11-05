@@ -247,6 +247,27 @@
                         <input type="email" class="caixa-texto" id="email-cadastro" placeholder="Email" required>
                     </div>
                     <div class="caixa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.962q-3.013-.895-5.007-3.651Q5 14.554 5 11.1V5.692l7-2.615l7 2.615V11.1q0 3.454-1.993 6.21q-1.994 2.757-5.007 3.652Zm0-1.062q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.23l-6 2.23V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.88Z"/></svg>
+
+                        <select class="caixa-texto" id="time-cadastro" style="width: 222px;" required>
+                            <option class="caixa-texto">
+                                Corinthians
+                            </option>
+                            <option class="caixo-texto">
+                                Flamengo
+                            </option>
+                            <option class="caixa-texto">
+                                Santos
+                            </option>
+                            <option class="caixa-texto">
+                                São-Paulo
+                            </option>
+                            <option class="">
+                                Palmeiras
+                            </option>
+                        </select>
+                    </div>
+                    <div class="caixa">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><g fill="none" stroke="white"><path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/><path stroke-linejoin="round" d="M5 10h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path stroke-linejoin="round" stroke-width="1.5" d="M14.5 15.5h.01v.01h-.01z"/></g></svg>
                         
                         <input type="password" class="caixa-texto" id="senha-cadastro" placeholder="Senha" required>
@@ -259,7 +280,7 @@
                     <div class="caixa">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
                         
-                        <input type="date" style="width: 220px;" class="caixa-texto" id="senha-cadastro"  required>
+                        <input type="date" style="width: 222px;" class="caixa-texto" id="data-cadastro"  required>
                     </div>
 
                     <div class="cadastro-eqc-senha">
@@ -268,7 +289,7 @@
                         </a>
                     </div>
 
-                    <button class="btn-login" style="background-color: #9340FF; margin-top: 10px;">
+                    <button class="btn-login" type="button" onclick="cadastrar()" style="background-color: #9340FF; margin-top: 5px; margin-bottom: 5px;">
                         Fazer Cadastro
                     </button>
                 </form>
@@ -304,7 +325,7 @@
         var caixaLogin = document.getElementById('div_login');
         var caixaCadastro = document.getElementById('div_cadastro');
 
-        caixaCadastro.style.transform = 'translatey(-100%)';
+        caixaCadastro.style.transform = 'translateY(-100%)';
         caixaLogin.style.transform = 'translateY(-100%)';
     }
     
@@ -312,7 +333,7 @@
         var caixaLogin = document.getElementById('div_login');
         var caixaCadastro = document.getElementById('div_cadastro');
 
-        caixaCadastro.style.transform = 'translatey(0%)';
+        caixaCadastro.style.transform = 'translateY(0%)';
         caixaLogin.style.transform = 'translateY(0%)';
     }
 
@@ -342,3 +363,4 @@
 
     setInterval(fecharAnimacao, 7000);
 </script>
+<script src="./js/cadastro.js"></script>
