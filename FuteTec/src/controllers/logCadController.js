@@ -24,4 +24,38 @@ function cadastrar(req, res){
     );
 }
 
-module.exports = { cadastrar }
+function autenticar(req, res){
+    var emailLogin = req.body.emailLoginServer;
+    var senhaLogin  = req.body.senhaLoginServer;
+
+    logCadUser.autenticar(emailLogin, senhaLogin)
+    .then(
+        function (resultado){
+            if(resultado.length == 1){
+                res.json({
+                    id: resultado[0].idUsuario,
+                    nome: resultado[0].nome,
+                    email: resultado[0].email,
+                    senha: resultado[0].senha,
+                    nick: resultado[0].nick,
+                    dtCriacao: resultado[0].dtCriacao
+                })
+            } else if(resultado.length == 0){
+                res.status(403).send("Email e/ou senha inválido(s)");
+            } else {
+                res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+            }
+        }
+    ).catch(
+        function(erro){
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar a autenticação! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+}
+
+module.exports = { cadastrar, autenticar }

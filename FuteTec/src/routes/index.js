@@ -11,4 +11,9 @@ router.post('/cadastrar', function (req, res) {
     logCadController.cadastrar(req, res);
 })
 
+router.post('/login', function (req, res) {
+    logCadController.autenticar(req, res);
+})
+
+
 module.exports = router;

@@ -206,18 +206,18 @@
         <div class="login-cadastro">
             <div class="login" id="div_login">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" onclick="fecharPopUp()" viewBox="0 0 24 24" style="margin: -40px 30px 40px auto; cursor: pointer;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m7 7l10 10M7 17L17 7"/></svg>
-                <h1 style="font-size: 40px; margin: 20px 0">
+                <h1 style="font-size: 50px; margin: 20px 0">
                     Login
                 </h1>
                 <br><br>
                 <form>
                     <div class="caixa">
                         <img src="assets/icon/user-light.svg" width="25">
-                        <input type="text" class="caixa-texto" id="nome-user" placeholder="User" required>
+                        <input type="text" class="caixa-texto" id="login_user" placeholder="User" required>
                     </div>
                     <div class="caixa">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><g fill="none" stroke="white"><path stroke-linecap="round" d="M8 10V7a4 4 0 1 1 8 0v3"/><path stroke-linejoin="round" d="M5 10h14v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9Z"/><path stroke-linejoin="round" stroke-width="1.5" d="M14.5 15.5h.01v.01h-.01z"/></g></svg>
-                        <input type="password" class="caixa-texto" id="senha-user" placeholder="Senha" required>
+                        <input type="password" class="caixa-texto" id="login_senha" placeholder="Senha" required>
                     </div>
                     <div class="cadastro-eqc-senha">
                         <a onclick="cadastro()">
@@ -227,14 +227,14 @@
                             Esqueceu a Senha
                         </a>
                     </div>
-                    <button class="btn-login">
+                    <button type="button" onclick="fazerLogin()" class="btn-login" style="margin-top: 40px;">
                         Fazer Login
                     </button>
                 </form>
             </div>
             <div class="cadastro" id="div_cadastro">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" onclick="fecharPopUp()" viewBox="0 0 24 24" style="margin: -0px 30px 0px auto; cursor: pointer;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m7 7l10 10M7 17L17 7"/></svg>
-                <h1 style="font-size: 40px; margin: 20px 0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" onclick="fecharPopUp()" viewBox="0 0 24 24" style="margin: 5px 30px 0 auto; cursor: pointer;"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m7 7l10 10M7 17L17 7"/></svg>
+                <h1 style="font-size: 40px; margin: 5px 0 15px">
                     cadastro
                 </h1>
                 <form>
@@ -289,7 +289,7 @@
                         </a>
                     </div>
 
-                    <button class="btn-login" type="button" onclick="cadastrar()" style="background-color: #9340FF; margin-top: 5px; margin-bottom: 5px;">
+                    <button class="btn-login" type="button" onclick="cadastrar()" style="background-color: #9340FF; margin-top: 5px; margin-bottom: 10px;">
                         Fazer Cadastro
                     </button>
                 </form>
@@ -364,3 +364,4 @@
     setInterval(fecharAnimacao, 7000);
 </script>
 <script src="./js/cadastro.js"></script>
+<script src="./js/login.js"></script>
