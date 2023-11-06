@@ -1,20 +1,25 @@
 const mysql = require("mysql2");
 
-const conn = mysql.createConnection({
+var mySqlConfig = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'futetec'
 });
 
-conn.connect( function(err){
+mySqlConfig.connect( function(err){
 console.log("Conexão com o banco de dados realizado com sucesso!");
 });
 
 function executar(instrucao) {
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         return new Promise(function (resolve, reject) {
-            var conexao = mysql.createConnection(mySqlConfig)
+            var conexao = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '',
+            database: 'futetec'
+        })
             conexao.connect();
             conexao.query(instrucao, function (erro, resultados) {
                 conexao.end();

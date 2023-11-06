@@ -3,7 +3,7 @@ var router = express.Router();
 
 var logCadController = require("../controllers/logCadController.js");
 
-router.get("/index", function (req, res) {
+router.get("/", function (req, res) {
     res.render("index");
 });
 

@@ -48,7 +48,7 @@ function cadastrar() {
     }
 
     if (qtdErros == 0) {
-        fetch("/cadastrar", {
+        fetch("/index/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

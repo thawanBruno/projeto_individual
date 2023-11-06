@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "/public")));
 
 
-app.use("/", indexRoute);
+app.use("/index", indexRoute);
 app.use("/feed", feedRoute);
 app.use("/perfil", perfilRoute);
 app.use("/configuracao", configuracaoRoute);

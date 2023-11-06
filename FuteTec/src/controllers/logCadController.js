@@ -4,10 +4,10 @@ function cadastrar(req, res){
     var nome = req.body. nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var dtNasc = req.body.NascServer;
+    var dtNasc = req.body.dtNascServer;
     var time = req.body.timeServer;
 
-    usuarioModel.cadastrar(nome, email, senha, dtNasc, time)
+    logCadUser.cadastrar(nome, email, senha, dtNasc, time)
     .then(
         function (resultado) {
             res.json(resultado);
