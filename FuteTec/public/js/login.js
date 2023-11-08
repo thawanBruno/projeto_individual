@@ -1,6 +1,6 @@
 function fazerLogin(){
     var emailIpt = document.getElementById('login_user');
-    var senhaIpt = document.getAnimations('login_senha');
+    var senhaIpt = document.getElementById('login_senha');
 
     var email = emailIpt.value;
     var senha = senhaIpt.value;
@@ -35,7 +35,7 @@ function fazerLogin(){
                     sessionStorage.NOME_USER = json.nome;
                     sessionStorage.ID_USER = json.id;
                     sessionStorage.SENHA_USER = json.senha;
-                    sessionStorage.TIME_USER = json.time;
+                    sessionStorage.TIME_USER = json.timeUser;
                     sessionStorage.DTNASC_USER = json.dtNasc;
 
                     setTimeout(function(){

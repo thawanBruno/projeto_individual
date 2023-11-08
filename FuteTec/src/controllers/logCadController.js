@@ -28,6 +28,9 @@ function autenticar(req, res){
     var emailLogin = req.body.emailLoginServer;
     var senhaLogin  = req.body.senhaLoginServer;
 
+    console.log(emailLogin);
+    console.log(senhaLogin);
+
     logCadUser.autenticar(emailLogin, senhaLogin)
     .then(
         function (resultado){
@@ -37,8 +40,8 @@ function autenticar(req, res){
                     nome: resultado[0].nome,
                     email: resultado[0].email,
                     senha: resultado[0].senha,
-                    nick: resultado[0].nick,
-                    dtCriacao: resultado[0].dtCriacao
+                    time: resultado[0].timeUser,
+                    dtNasc: resultado[0].dtNasc
                 })
             } else if(resultado.length == 0){
                 res.status(403).send("Email e/ou senha inválido(s)");
