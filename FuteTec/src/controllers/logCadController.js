@@ -36,12 +36,12 @@ function autenticar(req, res){
         function (resultado){
             if(resultado.length == 1){
                 res.json({
-                    id: resultado[0].idUsuario,
+                    id: resultado[0].idUser,
                     nome: resultado[0].nome,
                     email: resultado[0].email,
                     senha: resultado[0].senha,
-                    time: resultado[0].timeUser,
-                    dtNasc: resultado[0].dtNasc
+                    dtNasc: resultado[0].dtNasc,
+                    timeUser: resultado[0].timeUser
                 })
             } else if(resultado.length == 0){
                 res.status(403).send("Email e/ou senha inválido(s)");

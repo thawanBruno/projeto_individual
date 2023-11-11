@@ -12,4 +12,8 @@ router.post('/publicar', upload.single('imgPost'), (req, res) => {
     feedController.salvar(req, res);
   });
 
+router.get('/listar', function (req, res){
+  feedController.listar(req, res);
+});
+
 module.exports = router;

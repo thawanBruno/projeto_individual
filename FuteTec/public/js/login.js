@@ -33,7 +33,7 @@ function fazerLogin(){
                 resposta.json().then(json =>{
                     sessionStorage.EMAIL_USER = json.email;
                     sessionStorage.NOME_USER = json.nome;
-                    sessionStorage.ID_USER = json.id;
+                    sessionStorage.ID_USER = json.idUser;
                     sessionStorage.SENHA_USER = json.senha;
                     sessionStorage.TIME_USER = json.timeUser;
                     sessionStorage.DTNASC_USER = json.dtNasc;
