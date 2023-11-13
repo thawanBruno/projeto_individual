@@ -12,20 +12,12 @@
     <script src="./js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), carregarFeedPerfil()">
     <div class="caixa-comentario">
-        <div class="comentarios">
+        <div class="comentarios" id="comentarios">
             <div class="comentario-outros">
-                <h2>Nome do Usuário</h2>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error nisi iure aut amet accusantium iste
-                reprehenderit deleniti, quis rem modi, in obcaecati tempore? Dolor at voluptatibus sapiente itaque saepe
-                eveniet.
-            </div>
-            <div class="comentario-eu">
-                <h2>Nome do Usuário</h2>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error nisi iure aut amet accusantium iste
-                reprehenderit deleniti, quis rem modi, in obcaecati tempore? Dolor at voluptatibus sapiente itaque saepe
-                eveniet.
+                <h2>FuteTec</h2>
+                Aqui voce verá seus comentários!!!
             </div>
         </div>
         <form>
@@ -62,7 +54,7 @@
                 </li>
                 <li>
                     Posts <br>
-                    <p>000</p>
+                    <p id="qtd_posts">000</p>
                 </li>
             </ul>
             <button class="seguir">
@@ -71,119 +63,11 @@
         </div>
     </div>
 
-    <main>
+    <main id="postagens">
         <h1 style="margin: 0; font-size: 50px;">
             Seus Posts
         </h1>
-        <div class="post">
-            <ul class="ucc">
-                <li>
-                    <a>
-                        <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                            class="img-usuario" style="width: 45px; margin-bottom: 15px;">
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="assets/icon/soccer-ball.svg" width="45">
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
-                            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
-                        </svg>
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-            </ul>
-            <div class="conteudo">
-                <h2>Menina Reciclagem</h2>
 
-                <legend>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit doloribus libero eligendi obcaecati
-                    ducimus assumenda? Veniam nisi expedita libero quos, a non vero earum atque ducimus quaerat,
-                    assumenda praesentium possimus.<br><br>
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo animi impedit minima. Voluptate
-                    soluta veritatis, autem possimus eius cum id fugiat ratione sequi odit odio voluptas tenetur dolorum
-                    accusantium velit.
-                </legend>
-            </div>
-        </div>
-        <div class="post">
-            <ul class="ucc">
-                <li>
-                    <a>
-                        <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                            class="img-usuario" style="width: 45px; margin-bottom: 15px;">
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="assets/icon/iconSite.png" width="55">
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
-                            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
-                        </svg>
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-            </ul>
-            <div class="conteudo">
-                <h2 class="nome_do_usuario">Usuário</h2>
-
-                <legend>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit doloribus libero eligendi obcaecati
-                    ducimus assumenda? Veniam nisi expedita libero quos, a non vero earum atque ducimus quaerat,
-                    assumenda praesentium possimus.<br><br>
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo animi impedit minima. Voluptate
-                    soluta veritatis, autem possimus eius cum id fugiat ratione sequi odit odio voluptas tenetur dolorum
-                    accusantium velit.
-                </legend>
-                <img src="https://i0.statig.com.br/bancodeimagens/6s/3l/jx/6s3ljxqmoe5e0zeyl10audyce.jpg"
-                    class="img-conteudo">
-            </div>
-        </div>
-        <div class="post">
-            <ul class="ucc">
-                <li>
-                    <a>
-                        <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                            class="img-usuario" style="width: 45px; margin-bottom: 15px;">
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img src="assets/icon/soccer-ball.svg" width="45">
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
-                            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
-                        </svg>
-                        <p class="qtd-interacao">000</p>
-                    </a>
-                </li>
-            </ul>
-            <div class="conteudo">
-                <h2 id="nome_do_usuario">Menina Reciclagem</h2>
-
-                <img src="https://i0.statig.com.br/bancodeimagens/6s/3l/jx/6s3ljxqmoe5e0zeyl10audyce.jpg"
-                    class="img-conteudo">
-            </div>
-        </div>
         <div class="notificacao" id="caixa_notificacao" style="z-index: 5;">
             <div class="uma-ntfc">
                 <div class="img-ntfc">
@@ -329,6 +213,8 @@
             }
         }
     </script>
+    <script src="./js/funcoesPerfil.js"></script>
+    <script src="./js/funcoesFeed.js"></script>
 </body>
 
 </html>

@@ -5,19 +5,18 @@ var senha = sessionStorage.SENHA_USER;
 var time = sessionStorage.TIME_USER;
 var dtNasc = sessionStorage.DTNASC_USER;
 
-// var nomeTela = document.querySelectorAll('.nome_do_usuario');
-// for(
-//     var cont = 0;
-//     cont < nomeTela.length;
-//     cont += 1
-// ){
-//     nomeTela[cont].innerHTML = nome;
-// }
 
 function validarSessao() {
 
     if (email != null && nome != null) {
-
+        var nomeTela = document.querySelectorAll('.nome_do_usuario');
+        for (
+            var cont = 0;
+            cont < nomeTela.length;
+            cont += 1
+        ) {
+            nomeTela[cont].innerHTML = nome;
+        }
     } else {
         window.location = "index.html";
     }

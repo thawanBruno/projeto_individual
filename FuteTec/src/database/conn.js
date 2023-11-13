@@ -2,24 +2,24 @@ const mysql = require("mysql2");
 
 var mySqlConfig = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
+    user: 'aluno',
+    password: 'sptech',
     database: 'futetec'
 });
 
-mySqlConfig.connect( function(err){
-console.log("Conexão com o banco de dados realizado com sucesso!");
+mySqlConfig.connect(function (err) {
+    console.log("Conexão com o banco de dados realizado com sucesso!");
 });
 
 function executar(instrucao) {
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         return new Promise(function (resolve, reject) {
             var conexao = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'futetec'
-        })
+                host: 'localhost',
+                user: 'aluno',
+                password: 'sptech',
+                database: 'futetec'
+            })
             conexao.connect();
             conexao.query(instrucao, function (erro, resultados) {
                 conexao.end();
