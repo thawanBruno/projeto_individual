@@ -62,6 +62,9 @@
             </li>
         </ul>
     </header>
+    <div class="grafico-evento">
+        <canvas id="myChart" height="190"></canvas>
+    </div>
     <main id="postagens">
         <!-- <div class="post">
             <ul class="ucc">
@@ -169,32 +172,28 @@
         </div> -->
 
         <div class="caixa-comentario">
-            <div class="comentarios">
+            <div class="comentarios" id="comentarios">
                 <div class="comentario-outros">
-                    <h2>Nome do Usuário</h2>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error nisi iure aut amet accusantium iste
-                    reprehenderit deleniti, quis rem modi, in obcaecati tempore? Dolor at voluptatibus sapiente itaque
-                    saepe eveniet.
-                </div>
+                    <h2>futeTec</h2>
+                    Aqui você verá os comentários!!!
+                    
+                </div><!--
                 <div class="comentario-eu">
                     <h2>Nome do Usuário</h2>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error nisi iure aut amet accusantium iste
                     reprehenderit deleniti, quis rem modi, in obcaecati tempore? Dolor at voluptatibus sapiente itaque
                     saepe eveniet.
-                </div>
+                </div> -->
             </div>
             <form>
-                <input placeholder="Digite seu comentário" maxlength="220">
-                <button>
+                <input placeholder="Digite seu comentário" maxlength="220" id="comentario_eu">
+                <button type="button" onclick="enviarComentario()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20">
                         <path fill="white"
                             d="M2.184 2.112a.5.5 0 0 1 .54-.06l15 7.5a.5.5 0 0 1 0 .895l-15 7.5a.5.5 0 0 1-.707-.576L3.983 10L2.017 2.629a.5.5 0 0 1 .167-.517Zm2.7 8.388L3.27 16.556L16.382 10L3.269 3.444L4.884 9.5H11.5a.5.5 0 1 1 0 1H4.884Z" />
                     </svg>
                 </button>
             </form>
-        </div>
-        <div class="grafico-evento">
-            <canvas id="myChart" height="190"></canvas>
         </div>
         <div class="notificacao" id="caixa_notificacao">
             <div class="uma-ntfc">
