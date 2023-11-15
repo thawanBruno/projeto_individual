@@ -87,6 +87,15 @@ form input{
     border-radius: 25px;
 }
 
+form select{
+    font-size: 20px;
+    padding: 5px;
+    border: 1px white solid;
+    border-radius: 25px;
+    background-color: #101728;
+    width: 90%;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(0.8) brightness(100%) sepia(100%) saturate(0%) hue-rotate(240deg);

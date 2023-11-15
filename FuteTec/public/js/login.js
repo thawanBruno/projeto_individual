@@ -37,6 +37,7 @@ function fazerLogin(){
                     sessionStorage.SENHA_USER = json.senha;
                     sessionStorage.TIME_USER = json.timeUser;
                     sessionStorage.DTNASC_USER = json.dtNasc;
+                    sessionStorage.IMG_USER = json.imgPerfil;
 
                     setTimeout(function(){
                         window.location = '/feed'

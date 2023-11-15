@@ -271,7 +271,6 @@ function criarPublicacao() {
 
     var legendaPost = document.getElementById('legenda_preview').innerHTML;
     var imgPost = document.getElementById('imagem_post');
-
     var id = sessionStorage.ID_USER;
 
     formData.append('legenda', legendaPost);
