@@ -107,3 +107,24 @@ function redefinir() {
             return false;
     }
 }
+
+
+function deletarConta(){
+    var id = sessionStorage.ID_USER;
+    fetch(`/configuracao/deletar/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            window.location = "/index"
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}

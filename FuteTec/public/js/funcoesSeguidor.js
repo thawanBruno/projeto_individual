@@ -1,4 +1,95 @@
+var idSeguidor = sessionStorage.VAR_APOIO;
 var id = sessionStorage.ID_USER;
+
+function deixarSeguir(){
+    var verificacao = document.getElementById('btn_seguir').innerText;
+    if(verificacao == "Seguir"){
+        fetch("/seguidor/seguir", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idSeg: idSeguidor,
+                idUser: id
+            }),
+        }).then(function (resposta){
+            console.log("resposta: ", resposta);
+            if(resposta.ok){
+                document.getElementById('btn_seguir').innerText = "Deixar de Seguir";
+            }
+        })
+    } else{
+        fetch("/seguidor/dixarSeguir", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idSeg: idSeguidor,
+                idUser: id
+            }),
+        }).then(function (resposta){
+            console.log("resposta: ", resposta);
+            if(resposta.ok){
+                document.getElementById('btn_seguir').innerText = "Seguir";
+            }
+        })
+    }
+    carregarQtdSeguidores()
+}
+
+function carregarInformacoes() {
+    fetch("/seguidor/informacoes", {
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idserver: idSeguidor
+        }),
+    }).then(function (resposta){
+        if(resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                var dados = resposta[0];
+                
+                document.getElementById('imagem_seguidor').src = `./assets/imgsPerfil/${dados.imgPerfil}`;
+                document.getElementById('nome_seguidor').innerText = dados.nome;
+                
+            });
+            verificarSeguidor()
+        }
+    })
+}
+
+function verificarSeguidor(){
+    fetch("/seguidor/verificar", {
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idSeg: idSeguidor,
+            idUser: id
+        }),
+    }).then(function (resposta){
+        if(resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                var dados = resposta[0];
+
+                if(dados.verificacao == 1){
+                    document.getElementById('btn_seguir').innerText = "Deixar de Seguir";
+                } else{
+                    document.getElementById('btn_seguir').innerText = "Seguir";
+                }
+                
+            });
+            carregarQtdSeguidores()
+        }
+    })
+}
 
 function carregarQtdSeguidores() {
     fetch("/seguidor/seguidores", {
@@ -7,7 +98,7 @@ function carregarQtdSeguidores() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            idserver: id
+            idserver: idSeguidor
         }),
     }).then(function (resposta){
         if(resposta.ok) {
@@ -29,7 +120,7 @@ function carregarQtdSeguindo() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            idserver: id
+            idserver: idSeguidor
         }),
     }).then(function (resposta){
         if(resposta.ok) {
@@ -39,42 +130,19 @@ function carregarQtdSeguindo() {
                 
                 document.getElementById('qtd_seguindo').innerText = dados.qtdSeguindo;
             });
-            carregarFeedPerfil()
+            carregarFeedSeguidor()
         }
     })
 }
 
-function verificarSeguidor(){
-    fetch("/seguidor/seguindo", {
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idserver: id
-        }),
-    }).then(function (resposta){
-        if(resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-                var dados = resposta[0];
-                
-                document.getElementById('qtd_seguindo').innerText = dados.qtdSeguindo;
-            });
-            carregarFeedPerfil()
-        }
-    })
-}
-
-function carregarFeedPerfil() {
-    var id = sessionStorage.ID_USER;
-    fetch("/perfil/listar", {
+function carregarFeedSeguidor() {
+    fetch("/seguidor/listar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            idserver: id
+            idserver: idSeguidor
         }),
     }).then(function (resposta) {
         if (resposta.ok) {

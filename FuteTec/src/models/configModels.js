@@ -8,4 +8,12 @@ function redefinir (usuario){
     return database.executar(instrucao);
 }
 
-module.exports = {redefinir}
+function deletar(id) {
+    var instrucao = `
+        DELETE FROM usuario WHERE idUser = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+module.exports = {redefinir, deletar}

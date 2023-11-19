@@ -12,12 +12,13 @@ function carregarFeed() {
                     var publicacoes = resposta[cont];
                     var feed = document.getElementById('postagens');
 
+
                     feed.innerHTML += `
                     <div class="post">
                     <ul class="ucc">
                         <li>
-                            <a>
-                                <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
+                            <a onclick="sessionStorage.VAR_APOIO = ${publicacoes.fkUser}; window.location = '/seguidor.html'">
+                                <img src="./assets/imgsPerfil/${publicacoes.imgPerfil}"
                                     class="img-usuario" style="width: 45px; margin-bottom: 15px;">
                             </a>
                         </li>
@@ -228,6 +229,8 @@ function abrirComentarios() {
                     </div>
                     `;
                 }
+                var qtdComents = document.getElementById(`qtdComent${idComentarios}`).innerText = cont;
+                
             })
         } 
     }).catch(err => {
@@ -260,8 +263,7 @@ function enviarComentario(){
         }),
     }).then(function (likes) {
         if (likes.ok) {
-            setTimeout(abrirComentarios, 200);
-            
+            setTimeout(abrirComentarios, 100);
         }
     })
 }

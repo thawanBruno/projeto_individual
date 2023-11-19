@@ -9,7 +9,7 @@ function salvar(usuario) {
 
 function listar() {
 
-    var instrucao = `SELECT u.nome, p.idPost, p.legenda, p.imgPost FROM posts as p join usuario as u on p.fkUser = u.idUser GROUP BY p.idPost order by p.idPost DESC;
+    var instrucao = `SELECT u.nome, p.idPost, p.legenda, p.imgPost, u.imgPerfil, p.fkUser FROM posts as p join usuario as u on p.fkUser = u.idUser GROUP BY p.idPost order by p.idPost DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -12,7 +12,7 @@
     <script src="./js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao(), carregarQtdSeguidores()">
+<body onload="validarSessao(), carregarInformacoes()">
     <div class="caixa-comentario">
         <div class="comentarios" id="comentarios">
             <div class="comentario-outros">
@@ -38,9 +38,9 @@
     <div class="header-user">
         <div class="blur-escuro">
             <div class="elipse-perfil">
-                <img class="imagem-perfil img_do_usuario" src="./assets/icon/users.svg" width="90%" height="90%">
+                <img class="imagem-perfil" id="imagem_seguidor" src="./assets/icon/users.svg" width="90%" height="90%">
             </div>
-            <h2 class="nome_do_usuario" style="margin: 2px 0;">Usuário</h2>
+            <h2 id="nome_seguidor" style="margin: 2px 0;">Usuário</h2>
             <ul style="margin: 10px 0;">
                 <li>
                     Seguindo <br>
@@ -55,6 +55,9 @@
                     <p id="qtd_posts">000</p>
                 </li>
             </ul>
+            <button onclick="deixarSeguir()" id="btn_seguir" class="seguir">
+                seguir
+            </button>
         </div>
     </div>
 
@@ -207,7 +210,7 @@
             }
         }
     </script>
-    <script src="./js/funcoesPerfil.js"></script>
+    <script src="./js/funcoesSeguidor.js"></script>
     <script src="./js/funcoesFeed.js"></script>
 </body>
 

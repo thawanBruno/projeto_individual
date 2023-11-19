@@ -8,7 +8,6 @@ var imgPerfil = sessionStorage.IMG_USER;
 
 
 function validarSessao() {
-
     if (email != null && nome != null) {
         var nomeTela = document.querySelectorAll('.nome_do_usuario');
         var imgTela = document.querySelectorAll('.img_do_usuario');
@@ -17,8 +16,8 @@ function validarSessao() {
             cont < nomeTela.length || cont < imgTela.length;
             cont += 1
         ) {
-            if(nomeTela.length > 0) nomeTela[cont].innerHTML = nome;
-            if(imgPerfil.length > 0) imgTela[cont].src = `./assets/imgsPerfil/${imgPerfil}`;
+            if(nomeTela.length > cont) nomeTela[cont].innerHTML = nome;
+            if(imgPerfil.length > cont && imgPerfil != "null") imgTela[cont].src = `./assets/imgsPerfil/${imgPerfil}`;
         }
     } else {
         window.location = "index.html";

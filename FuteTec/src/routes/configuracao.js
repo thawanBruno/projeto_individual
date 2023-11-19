@@ -11,4 +11,9 @@ router.post("/redefinir", upload.single('imgPerfil'), function (req, res) {
     configController.redefinir(req, res);
 })
 
+router.delete("/deletar/:id", function (req, res) {
+    console.log('f1');
+    configController.deletar(req, res);
+});
+
 module.exports = router;
