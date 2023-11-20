@@ -1,3 +1,10 @@
+const formularioComent = document.getElementById('form_comentario');
+
+formularioComent.addEventListener('submit', (event) => {
+    event.preventDefault();
+    enviarComentario();
+})
+
 function carregarFeed() {
     fetch("/feed/listar").then(function (resposta) {
         if (resposta.ok) {

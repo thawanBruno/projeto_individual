@@ -1,0 +1,87 @@
+*{
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #101728;
+}
+body::-webkit-scrollbar {
+    width: 10px;
+    background: #101728;
+}
+body::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+body{
+    background-color: #101728;
+}
+
+header{
+    padding: 0 5% 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0%;
+    background-color: #101728;
+    z-index: 2;
+}
+
+header h1{
+    margin: 0;
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 10px;
+}
+
+header ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    padding: 5px;
+    margin-left: 15px;
+}
+
+header ul li a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+}
+
+.img-usuario{
+    border-radius: 25px;
+    width: 35px;
+}
+
+main{
+    display: flex;
+    justify-content: start;
+    margin: 7% 6% 0;
+    width: 90%;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.graficos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.grafico-evento{
+    margin: 10px auto;
+    width: 40%;
+}

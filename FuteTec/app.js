@@ -20,6 +20,8 @@ var feedRoute = require("./src/routes/feed");
 var perfilRoute = require("./src/routes/perfil");
 var seguidorRoute = require("./src/routes/seguidor");
 var configuracaoRoute = require("./src/routes/configuracao");
+var dashboardRoute = require("./src/routes/dashboard");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,6 +33,8 @@ app.use("/feed", feedRoute);
 app.use("/perfil", perfilRoute);
 app.use("/Seguidor", seguidorRoute);
 app.use("/configuracao", configuracaoRoute);
+app.use("/dashboard", dashboardRoute);
+
 
 app.listen(PORTA, () => {
     console.log(`Servidor rodando em : http://localhost:${PORTA}`);
