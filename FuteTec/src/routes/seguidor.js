@@ -34,4 +34,16 @@ router.post("/dixarSeguir", function (req, res){
     seguidorController.deixarSeguir(req, res);
 });
 
+router.post('/listarLike', (req, res) => {
+    seguidorController.listarLikes(req, res);
+  });
+
+router.post('/listarQtdLike', (req, res) =>{
+    seguidorController.listandoQtdLikes(req, res);
+});
+
+router.post('/listarQtdComents', (req, res) =>{
+    seguidorController.listandoQtdComents(req, res);
+});
+
 module.exports = router;

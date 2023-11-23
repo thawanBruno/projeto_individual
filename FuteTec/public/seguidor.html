@@ -8,20 +8,19 @@
     <link rel="shortcut icon" href="assets/icon/iconSite.png" type="image/x-icon">
     <link rel="stylesheet" href="css/feedStyle.css">
     <link rel="stylesheet" href="css/userStyle.css">
-    <link rel="stylesheet" href="css/notificacaoStyle.css">
     <script src="./js/sessao.js"></script>
 </head>
 
 <body onload="validarSessao(), carregarInformacoes()">
-    <div class="caixa-comentario">
+    <div class="caixa-comentario" id="form_comentario">
         <div class="comentarios" id="comentarios">
             <div class="comentario-outros">
                 <h2>FuteTec</h2>
                 Aqui voce verá seus comentários!!!
             </div>
         </div>
-        <form>
-            <input placeholder="Digite seu comentário" maxlength="120">
+        <form id="form_comentario">
+            <input placeholder="Digite seu comentário" id="comentario_eu" maxlength="120">
             <button>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20">
                     <path fill="white"
@@ -29,10 +28,6 @@
                 </svg>
             </button>
         </form>
-    </div>
-
-    <div class="grafico-evento">
-        <canvas id="myChart" height="190"></canvas>
     </div>
 
     <div class="header-user">
@@ -63,34 +58,9 @@
 
     <main id="postagens">
         <h1 style="margin: 0; font-size: 50px;">
-            Seus Posts
+            Posts
         </h1>
 
-        <div class="notificacao" id="caixa_notificacao" style="z-index: 5;">
-            <div class="uma-ntfc">
-                <div class="img-ntfc">
-                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                        class="ntfc-img-usuario">
-                </div>
-                <div class="conteudo-ntfc">
-                    <h2>Nome do Usuário</h2>
-                    <p>
-                        Curtiu Seu Post
-                    </p>
-                </div>
-            </div>
-            <div class="uma-ntfc">
-                <div class="img-ntfc">
-                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                        class="ntfc-img-usuario">
-                </div>
-                <div class="conteudo-ntfc">
-                    <h2>Nome do Usuário</h2>
-                    <p>
-                        Curtiu Seu Post
-                    </p>
-                </div>
-            </div>
     </main>
     <header>
         <h1>
@@ -100,7 +70,7 @@
 
         <ul>
             <l1>
-                <a>
+                <a onclick="limparSessao()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="M20.968 18.448a2.577 2.577 0 0 1-2.73 2.5c-2.153.012-4.306 0-6.459 0a.5.5 0 0 1 0-1c2.2 0 4.4.032 6.6 0c1.107-.016 1.589-.848 1.589-1.838V5.647A1.546 1.546 0 0 0 19 4.175a3.023 3.023 0 0 0-1.061-.095h-6.16a.5.5 0 0 1 0-1c2.224 0 4.465-.085 6.687 0a2.567 2.567 0 0 1 2.5 2.67Z" />
@@ -118,8 +88,8 @@
                 </a>
             </li>
             <li>
-                <a onclick="verificarNotificacao()">
-                    <img src="assets/icon/notification-line.svg">
+                <a href="dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 24 24"><path fill="white" d="M13.5 9V4H20v5h-6.5ZM4 12V4h6.5v8H4Zm9.5 8v-8H20v8h-6.5ZM4 20v-5h6.5v5H4Zm1-9h4.5V5H5v6Zm9.5 8H19v-6h-4.5v6Zm0-11H19V5h-4.5v3ZM5 19h4.5v-3H5v3Zm4.5-8Zm5-3Zm0 5Zm-5 3Z"/></svg>
                 </a>
             </li>
             <li>
@@ -134,84 +104,7 @@
             </li>
         </ul>
     </header>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart');
-        Chart.defaults.color = '#fff';
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Evento  FuteTec'],
-                datasets: [{
-                    label: 'corinthians',
-                    data: ['14'],
-                    borderWidth: 2,
-                    borderColor: 'white',
-                    backgroundColor: 'black'
-                },
-                {
-                    label: 'Flamengo',
-                    data: ['13'],
-                    borderWidth: 2,
-                    borderColor: 'black',
-                    backgroundColor: 'red'
-                },
-                {
-                    label: 'Santos',
-                    data: ['15'],
-                    borderWidth: 2,
-                    borderColor: 'black',
-                    backgroundColor: 'white'
-                },
-                {
-                    label: 'São-Paulo',
-                    data: ['14'],
-                    borderWidth: 2,
-                    borderColor: 'red',
-                    backgroundColor: 'white'
-                },
-                {
-                    label: 'Palmeiras',
-                    data: ['14'],
-                    borderWidth: 2,
-                    borderColor: 'white',
-                    backgroundColor: 'green'
-                }
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        label: {
-                            // This more specific font property overrides the global property
-                            font: {
-                                size: 20
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-    <script>
-
-        function verificarNotificacao() {
-            var notificacao = document.getElementById("caixa_notificacao");
-
-            if (notificacao.style.display == "none") {
-                notificacao.style.display = "flex";
-            } else {
-                notificacao.style.display = "none";
-            }
-        }
-    </script>
     <script src="./js/funcoesSeguidor.js"></script>
-    <script src="./js/funcoesFeed.js"></script>
 </body>
 
 </html>

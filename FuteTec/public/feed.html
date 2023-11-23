@@ -7,7 +7,6 @@
     <title>FuteTec</title>
     <link rel="stylesheet" href="css/feedStyle.css">
     <link rel="shortcut icon" href="assets/icon/iconSite.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/notificacaoStyle.css">
     <script src="./js/sessao.js"></script>
 </head>
 
@@ -45,8 +44,8 @@
                 </a>
             </li>
             <li>
-                <a>
-                    <img onclick="verificarNoticacao()" style="cursor: pointer;" src="assets/icon/notification-line.svg">
+                <a href="dashboard.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 24 24"><path fill="white" d="M13.5 9V4H20v5h-6.5ZM4 12V4h6.5v8H4Zm9.5 8v-8H20v8h-6.5ZM4 20v-5h6.5v5H4Zm1-9h4.5V5H5v6Zm9.5 8H19v-6h-4.5v6Zm0-11H19V5h-4.5v3ZM5 19h4.5v-3H5v3Zm4.5-8Zm5-3Zm0 5Zm-5 3Z"/></svg>
                 </a>
             </li>
             <li>
@@ -61,9 +60,6 @@
             </li>
         </ul>
     </header>
-    <div class="grafico-evento">
-        <canvas id="myChart" height="190"></canvas>
-    </div>
     <main id="postagens">
         <!-- <div class="post">
             <ul class="ucc">
@@ -194,32 +190,6 @@
                 </button>
             </form>
         </div>
-        <div class="notificacao" id="caixa_notificacao">
-            <div class="uma-ntfc">
-                <div class="img-ntfc">
-                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                        class="ntfc-img-usuario">
-                </div>
-                <div class="conteudo-ntfc">
-                    <h2>Nome do Usuário</h2>
-                    <p>
-                        Curtiu Seu Post
-                    </p>
-                </div>
-            </div>
-            <div class="uma-ntfc">
-                <div class="img-ntfc">
-                    <img src="https://blog.unyleya.edu.br/wp-content/uploads/2017/12/saiba-como-a-educacao-ajuda-voce-a-ser-uma-pessoa-melhor.jpeg"
-                        class="ntfc-img-usuario">
-                </div>
-                <div class="conteudo-ntfc">
-                    <h2>Nome do Usuário</h2>
-                    <p>
-                        Curtiu Seu Post
-                    </p>
-                </div>
-            </div>
-        </div>
     </main>
 
     <div class="bkg-post" id="abrir_post">
@@ -248,18 +218,6 @@
 
     <input type="file" id="imagem_post" style="position: absolute; opacity: 0; left: -10%;" onchange="imagemPreview1()">
 
-    <script>
-
-        function verificarNoticacao() {
-            var notificacao = document.getElementById("caixa_notificacao");
-
-            if (notificacao.style.display == "none") {
-                notificacao.style.display = "flex";
-            } else {
-                notificacao.style.display = "none";
-            }
-        }
-    </script>
     <script>
         function imagemPreview1(){
             var imagemPreview = document.getElementById('img_preview');

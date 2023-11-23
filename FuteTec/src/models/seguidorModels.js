@@ -43,4 +43,28 @@ function deixarSeguir(seg, user) {
     return database.executar(instrucao);
 }
 
-module.exports = { listar, informacoes, seguidores, seguindo, verificar, seguir, deixarSeguir }
+function listarLikes(id, seguidor) {
+    var instrucao = `
+    SELECT l.fkPost, l.fkUser from likes as l join posts as p on l.fkPost = p.idPost where l.fkUser = ${id} and p.fkUser = ${seguidor};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listandoQtdLikes(seguidor){
+    var instrucao = `
+    select count(l.fkPost) as qtdLikes, l.fkPost from likes as l join posts as p on l.fkPost = p.idPost where p.fkUser = ${seguidor} GROUP BY l.fkPost;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listandoQtdComents(seguidor){
+    var instrucao = `
+    select count(c.fkPost) as qtdComents, c.fkPost from comentarios as c join posts as p on c.fkPost = p.idPost where p.fkUser = ${seguidor} GROUP BY fkPost;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+module.exports = { listar, informacoes, seguidores, seguindo, verificar, seguir, deixarSeguir, listarLikes, listandoQtdLikes, listandoQtdComents }

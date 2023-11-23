@@ -8,9 +8,9 @@ header{
     margin-top: 50px;
     width: 100%;
     height: 400px;
-    background-image: url(https://i0.statig.com.br/bancodeimagens/6s/3l/jx/6s3ljxqmoe5e0zeyl10audyce.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-color: #9340FF;
     position: relative;
     z-index: 2;
 }

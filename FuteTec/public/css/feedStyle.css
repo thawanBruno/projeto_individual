@@ -234,12 +234,6 @@ form button{
     border: none;
 }
 
-.grafico-evento{
-    position: fixed;
-    top: 60%;
-    left: 65%;
-    width: 30%;
-}
 
 .bkg-post{
     position: fixed;

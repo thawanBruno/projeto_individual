@@ -1,3 +1,5 @@
+var timeUser = sessionStorage.TIME_USER;
+
 // quantidade totais de torcedores de uma torcida em específico
 var totCorinthians = 0;
 var totFlamenguistas = 0;
@@ -11,6 +13,25 @@ var totFlamenguistasUser = 0;
 var totSantosUser = 0;
 var totSaoPauloUser = 0;
 var totPalmeirasUser = 0;
+
+//Métricas dos posts
+var totLikes = 0;
+var TotComents = 0;
+var totPosts = 0;
+
+//Interações totais dos times e indicador do quanto o usuário é imparcial ou fanático
+var likesCorinthians = 0;
+var LikesFlamengo = 0;
+var likesSantos = 0;
+var likesSaoPaulo = 0;
+var likesPalmeiras = 0;
+
+var comentsCorinthians = 0;
+var comentsFlamengo = 0;
+var comentsSantos = 0;
+var comentsSaoPaulo = 0;
+var comentsPalmeiras = 0;
+
 
 function obterDados() {
     var id = sessionStorage.ID_USER;
@@ -39,7 +60,56 @@ function obterDados() {
                 totSantosUser = dados.qtdSantistasUser;
                 totSaoPauloUser = dados.qtdSaoPaulinosUser;
                 totPalmeirasUser = dados.qtdPalmeirensesUser;
-                atualizarDados();
+
+                totLikes = dados.qtdTotalDeLikes;
+                TotComents = dados.qtdTotalDeComents;
+                totPosts = dados.qtdTotalDePosts;
+
+                likesCorinthians = dados.likesCorinthians;
+                LikesFlamengo = dados.likesFlamengo;
+                likesPalmeiras = dados.likesPalmeiras;
+                likesSantos = dados.likesSantos;
+                likesSaoPaulo = dados.likesSaoPaulo;
+
+                comentsCorinthians = dados.comentsCorinthians;
+                comentsFlamengo = dados.comentsFlamengo;
+                comentsPalmeiras = dados.comentsPalmeiras;
+                comentsSantos = dados.comentsSantos;
+                comentsSaoPaulo = dados.comentsSaoPaulo;
+
+                var somaInteracoes = (totCorinthiansUser + likesCorinthians + comentsCorinthians) + (totFlamenguistasUser + LikesFlamengo + comentsFlamengo) + (totPalmeirasUser + likesPalmeiras + comentsPalmeiras) + (totSantosUser + likesSantos + comentsSantos) + (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+
+                if (timeUser == "Corinthians") {
+                    var somaInteracoesOutros = (totFlamenguistasUser + LikesFlamengo + comentsFlamengo) + (totPalmeirasUser + likesPalmeiras + comentsPalmeiras) + (totSantosUser + likesSantos + comentsSantos) + (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+                    var somaInteracoesSeu = (totCorinthiansUser + likesCorinthians + comentsCorinthians);
+
+                }
+
+                if (timeUser == "Flamengo") {
+                    var somaInteracoesOutros = (totCorinthiansUser + likesCorinthians + comentsCorinthians) + (totPalmeirasUser + likesPalmeiras + comentsPalmeiras) + (totSantosUser + likesSantos + comentsSantos) + (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+                    var somaInteracoesSeu = (totFlamenguistasUser + LikesFlamengo + comentsFlamengo);
+
+                }
+
+                if (timeUser == "Palmeiras") {
+                    var somaInteracoesOutros = (totCorinthiansUser + likesCorinthians + comentsCorinthians) + (totFlamenguistasUser + LikesFlamengo + comentsFlamengo) + (totSantosUser + likesSantos + comentsSantos) + (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+                    var somaInteracoesSeu = (totPalmeirasUser + likesPalmeiras + comentsPalmeiras);
+
+                }
+
+                if (timeUser == "Santos") {
+                    var somaInteracoesOutros = (totCorinthiansUser + likesCorinthians + comentsCorinthians) + (totFlamenguistasUser + LikesFlamengo + comentsFlamengo) + (totPalmeirasUser + likesPalmeiras + comentsPalmeiras) + (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+
+                    var somaInteracoesSeu = (totSantosUser + likesSantos + comentsSantos);
+                }
+
+                if (timeUser == "São-Paulo") {
+                    var somaInteracoesOutros = (totCorinthiansUser + likesCorinthians + comentsCorinthians) + (totFlamenguistasUser + LikesFlamengo + comentsFlamengo) + (totPalmeirasUser + likesPalmeiras + comentsPalmeiras) + (totSantosUser + likesSantos + comentsSantos);
+
+                    var somaInteracoesSeu = (totSaoPauloUser + likesSaoPaulo + comentsSaoPaulo);
+                }
+
+                atualizarDados(somaInteracoes, somaInteracoesOutros, somaInteracoesSeu);
 
             })
         }
@@ -47,13 +117,17 @@ function obterDados() {
 }
 
 //Tabelas  do dashboard
-function atualizarDados() {
+function atualizarDados(somaInteracoes, somaInteracoesOutros, somaInteracoesSeu) {
+    var imparcialidade = somaInteracoesOutros * 100 / somaInteracoes;
+    var fanatismo = somaInteracoesSeu * 100 / somaInteracoes;
+    var desempenho = somaInteracoes * 0.70 + somaInteracoesOutros;
+
     const ctx = document.getElementById('myChart');
     Chart.defaults.color = '#fff';
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Evento  FuteTec'],
+            labels: ['Quantidade de usuários de acordo com o time'],
             datasets: [{
                 label: 'corinthians',
                 data: [totCorinthians],
@@ -102,7 +176,7 @@ function atualizarDados() {
                     label: {
                         // This more specific font property overrides the global property
                         font: {
-                            size: 20
+                            size: 30
                         }
                     }
                 }
@@ -164,7 +238,7 @@ function atualizarDados() {
                     label: {
                         // This more specific font property overrides the global property
                         font: {
-                            size: 20
+                            size: 30
                         }
                     }
                 }
@@ -179,39 +253,28 @@ function atualizarDados() {
         data: {
             labels: ['Métricas dos seus posts'],
             datasets: [{
-                label: 'corinthians',
-                data: ['14'],
+                label: 'Likes',
+                data: [totLikes],
                 borderWidth: 2,
-                borderColor: 'white',
-                backgroundColor: 'black'
-            },
-            {
-                label: 'Flamengo',
-                data: ['13'],
-                borderWidth: 2,
-                borderColor: 'black',
-                backgroundColor: 'red'
-            },
-            {
-                label: 'Santos',
-                data: ['15'],
-                borderWidth: 2,
-                borderColor: 'black',
                 backgroundColor: 'white'
             },
             {
-                label: 'São-Paulo',
-                data: ['14'],
+                label: 'Comentários',
+                data: [TotComents],
                 borderWidth: 2,
-                borderColor: 'red',
-                backgroundColor: 'white'
+                backgroundColor: '#9340FF'
             },
             {
-                label: 'Palmeiras',
-                data: ['14'],
+                label: 'Posts',
+                data: [totPosts],
                 borderWidth: 2,
-                borderColor: 'white',
-                backgroundColor: 'green'
+                backgroundColor: '#FF3C5F'
+            },
+            {
+                label: 'Desempenho',
+                data: [desempenho],
+                borderWidth: 2,
+                backgroundColor: '#5cff33'
             }
             ]
         },
@@ -226,7 +289,7 @@ function atualizarDados() {
                     label: {
                         // This more specific font property overrides the global property
                         font: {
-                            size: 20
+                            size: 30
                         }
                     }
                 }
@@ -240,41 +303,18 @@ function atualizarDados() {
     new Chart(ctx3, {
         type: 'bar',
         data: {
-            labels: ['Evento  FuteTec'],
+            labels: ['Personalidade da conta'],
             datasets: [{
-                label: 'corinthians',
-                data: ['14'],
+                label: 'Imparcial',
+                data: [imparcialidade],
                 borderWidth: 2,
-                borderColor: 'white',
-                backgroundColor: 'black'
+                backgroundColor: '#FF3C5F'
             },
             {
-                label: 'Flamengo',
-                data: ['13'],
+                label: 'Fanática',
+                data: [fanatismo],
                 borderWidth: 2,
-                borderColor: 'black',
-                backgroundColor: 'red'
-            },
-            {
-                label: 'Santos',
-                data: ['15'],
-                borderWidth: 2,
-                borderColor: 'black',
-                backgroundColor: 'white'
-            },
-            {
-                label: 'São-Paulo',
-                data: ['14'],
-                borderWidth: 2,
-                borderColor: 'red',
-                backgroundColor: 'white'
-            },
-            {
-                label: 'Palmeiras',
-                data: ['14'],
-                borderWidth: 2,
-                borderColor: 'white',
-                backgroundColor: 'green'
+                backgroundColor: '#9340FF'
             }
             ]
         },
@@ -289,7 +329,7 @@ function atualizarDados() {
                     label: {
                         // This more specific font property overrides the global property
                         font: {
-                            size: 20
+                            size: 30
                         }
                     }
                 }
