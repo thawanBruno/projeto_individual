@@ -122,7 +122,9 @@ main{
 }
 
 .conteudo legend{
-    width: 95%;
+    width: fit-content;
+    word-break: break-word;
+    max-width: 95%;
     font-size: 18px;
     text-align: left;
     margin-bottom: 20px;

@@ -10,7 +10,11 @@ router.get("/", function (req, res) {
 
 router.post('/publicar', upload.single('imgPost'), (req, res) => {
     feedController.salvar(req, res);
-  });
+});
+
+router.post('/publicar2', (req, res) => {
+  feedController.salvar2(req, res);
+});
 
 router.get('/listar', function (req, res){
   feedController.listar(req, res);

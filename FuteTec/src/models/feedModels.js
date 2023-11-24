@@ -7,6 +7,13 @@ function salvar(usuario) {
   return database.executar(instrucao);
 }
 
+function salvar2(legenda, id) {
+  var instrucao = `INSERT INTO posts (legenda, imgPost, fkUser) VALUES ('${legenda}', 'null', ${Number(id)})`;
+
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 function listar() {
 
     var instrucao = `SELECT u.nome, p.idPost, p.legenda, p.imgPost, u.imgPerfil, p.fkUser FROM posts as p join usuario as u on p.fkUser = u.idUser GROUP BY p.idPost order by p.idPost DESC;
@@ -71,5 +78,5 @@ function enviandoComentario(idUser, comentario, fkPost){
   return database.executar(instrucao);
 }
 
-module.exports = { salvar, listar, listarLikes, dandoLike, dando1Like, listandoComentarios, listandoQtdLikes, listandoQtdComent, enviandoComentario }
+module.exports = { salvar, listar, listarLikes, dandoLike, dando1Like, listandoComentarios, listandoQtdLikes, listandoQtdComent, enviandoComentario, salvar2 }
 

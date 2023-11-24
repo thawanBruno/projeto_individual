@@ -16,6 +16,19 @@ function salvar(req, res) {
         });
 }
 
+function salvar2(req, res) {
+    var legenda = req.body.legenda;
+    var id = req.body.idServer;
+
+    usuarioModel.salvar2(legenda, id)
+        .then(resultado => {
+            res.status(201).send("Post criado com sucesso");
+            console.log(resultado)
+        }).catch(err => {
+            res.status(500).send(err);
+        });
+}
+
 function listar(req, res) {
     usuarioModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
@@ -140,4 +153,4 @@ function enviandoComentario(req, res) {
 }
 
 
-module.exports = { salvar, listar, listarLikes, dandoLike, dando1Like, listandoComentarios, listandoQtdLikes, listandoQtdComent, enviandoComentario }
+module.exports = { salvar, listar, listarLikes, dandoLike, dando1Like, listandoComentarios, listandoQtdLikes, listandoQtdComent, enviandoComentario, salvar2 }

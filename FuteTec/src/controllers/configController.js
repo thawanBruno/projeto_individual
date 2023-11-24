@@ -10,11 +10,10 @@ function redefinir(req, res) {
 
     configModels.redefinir(usuario)
         .then(resultado => {
+            var imagem = usuario.imagem
             res.json({
-                imgPerfil: usuario.imagem
+                imgPerfil: imagem
             })
-            res.status(201).send("Dados redefinidos com sucesso!!");
-            console.log(resultado)
         }).catch(err => {
             res.status(500).send(err);
         });

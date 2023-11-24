@@ -21,6 +21,7 @@ formularioComent.addEventListener('submit', (event) => {
 })
 
 function redefinir() {
+    var id = sessionStorage.ID_USER;
     var nomeIpt = document.getElementById('red_nome_user');
     var emailIpt = document.getElementById('red_email_user');
     var timezin = document.getElementById('red_time_cadastro').value;
@@ -102,20 +103,16 @@ function redefinir() {
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
-
                 if (resposta.ok) {
-                    sessionStorage.EMAIL_USER = email;
-                    sessionStorage.NOME_USER = nome;
-                    sessionStorage.SENHA_USER = senha;
-                    sessionStorage.TIME_USER = timezin;
-                    sessionStorage.DTNASC_USER = dtNasc1;
-
                     resposta.json().then(json =>{
+                        sessionStorage.EMAIL_USER = email;
+                        sessionStorage.NOME_USER = nome;
+                        sessionStorage.SENHA_USER = senha;
+                        sessionStorage.TIME_USER = timezin;
+                        sessionStorage.DTNASC_USER = dtNasc1;
                         sessionStorage.IMG_USER = json.imgPerfil;
                     })
-
                     window.location = "/configuracao";
-
                 } else{
                     throw "Houve um erro ao tentar se cadastrar!";
                 }
@@ -127,7 +124,6 @@ function redefinir() {
 
             return false;
     } else{
-        var id = sessionStorage.ID_USER;
         fetch("/configuracao/redefinir2", {
             method: "POST",
             headers: {
@@ -158,10 +154,9 @@ function redefinir() {
                     throw "Houve um erro ao tentar se cadastrar!";
                 }
             })
-
             .catch(function (resposta){
                 console.log(`#erro: ${resposta}`);
-            });
+            })
 
             return false;
     }
@@ -185,7 +180,8 @@ function deletarConta(){
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-    });
+    })
+    return false;
 }
 
 function fazerMudanca(){
