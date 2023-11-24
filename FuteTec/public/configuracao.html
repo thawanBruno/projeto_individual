@@ -27,25 +27,28 @@
             <button onclick="deletarConta()">
                 Excluir Conta
             </button>
+            <h2 id="mensagem_alerta" style="display: none; text-align: center; font-size: 20px;">
+                Lembre-se de clicar<br> em redefinir Informações!!!
+            </h2>
         </div>
         <div class="opcoes-de-mudanca">
                 <h1>Editar Informações</h1>
-            <form>
-                <input type="file" id="img_perfil" style="position: absolute; left: -120px; width: 100px; opacity: 0;">
+            <form id="form_redefinir">
+                <input type="file" oninput="fazerMudanca()" id="img_perfil" style="position: absolute; left: -120px; width: 100px; opacity: 0;">
                 <h2>
                     Nome
                 </h2>
-                <input value="Menina Reciclagem" id="red_nome_user">
+                <input value="Menina Reciclagem" oninput="fazerMudanca()" id="red_nome_user">
                 <h2>
                     Email
                 </h2>
-                <input type="email" value="example@example.com" id="red_email_user">
+                <input type="email" value="example@example.com" oninput="fazerMudanca()" id="red_email_user">
                 <h2>
                     Time do coração
                 </h2>
-                <select id="red_time_cadastro" required>
-                    <option>
-                        Selecione o seu time
+                <select oninput="fazerMudanca()" id="red_time_cadastro" required>
+                    <option id="timeCoracao">
+                        
                     </option>
                     <option>
                         Corinthians
@@ -67,15 +70,15 @@
                 <h2>
                     Senha
                 </h2>
-                <input value="123LM456" id="red_senha_user">
+                <input value="123LM456" oninput="fazerMudanca()" id="red_senha_user">
                 <h2>
                     Repetir Senha
                 </h2>
-                <input value="Repetir senha" id="red_senha2_user">
+                <input placeholder="Repetir senha" oninput="fazerMudanca()" id="red_senha2_user">
                 <h2>
                     Data de Nascimento
                 </h2>
-                <input type="date" value="2005-12-12" id="red_dt_nasc_user" style="padding: 15px 5px;">
+                <input type="date" value="2005-12-12" id="red_dt_nasc_user" oninput="fazerMudanca()" style="padding: 15px 5px;">
             </form>
         </div>
     </main>

@@ -24,6 +24,7 @@ function deixarSeguir(){
             console.log("resposta: ", resposta);
             if(resposta.ok){
                 document.getElementById('btn_seguir').innerText = "Deixar de Seguir";
+                carregarQtdSeguidores();
             }
         })
     } else{
@@ -40,10 +41,10 @@ function deixarSeguir(){
             console.log("resposta: ", resposta);
             if(resposta.ok){
                 document.getElementById('btn_seguir').innerText = "Seguir";
+                carregarQtdSeguidores();
             }
         })
     }
-    carregarQtdSeguidores()
 }
 
 function carregarInformacoes() {
@@ -270,6 +271,7 @@ function listarQtdLikes(){
 
                     var qtdComent = document.getElementById(`qtdLike${listandoQtd.fkPost}`);
                     qtdComent.innerHTML = listandoQtd.qtdLikes;
+                    listarQtdComents();
                 }
             })
         }

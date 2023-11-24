@@ -24,7 +24,8 @@ function carregarFeed() {
                     <div class="post">
                     <ul class="ucc">
                         <li>
-                            <a onclick="sessionStorage.VAR_APOIO = ${publicacoes.fkUser}; window.location = '/seguidor.html'">
+                            <a onclick="sessionStorage.VAR_APOIO = ${publicacoes.fkUser}; if(sessionStorage.VAR_APOIO == sessionStorage.ID_USER) window.location = '/perfil.html
+                            '; else window.location = '/seguidor.html';">
                                 <img src="./assets/imgsPerfil/${publicacoes.imgPerfil}"
                                     class="img-usuario" style="width: 45px; margin-bottom: 15px;">
                             </a>

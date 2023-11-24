@@ -148,7 +148,7 @@ function carregarFeedPerfil() {
 function likes1() {
     var id = sessionStorage.ID_USER;
 
-    fetch("/feed/listarLike", {
+    fetch("/perfil/listarLike", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -172,7 +172,6 @@ function likes1() {
 
                     logo.src = "assets/icon/iconSite.png";
                     logo.style.width = "55px";
-
                 }
             })
         }
@@ -180,7 +179,15 @@ function likes1() {
 }
 
 function listarQtdLikes(){
-    fetch("/feed/listarQtdComent").then(function (likes) {
+    fetch("/perfil/listarQtdComents", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idserver: id,
+        }),
+    }).then(function (likes) {
         if (likes.ok) {
             likes.json().then(function (likes) {
                 console.log("Dados recebidos: ", JSON.stringify(likes));
@@ -193,7 +200,7 @@ function listarQtdLikes(){
                     var listandoQtd = likes[cont];
 
                     var qtdComent = document.getElementById(`qtdComent${listandoQtd.fkPost}`);
-                    qtdComent.innerHTML = listandoQtd.qtdComent;
+                    qtdComent.innerHTML = listandoQtd.qtdComents;
                 }
             })
         }
@@ -201,7 +208,15 @@ function listarQtdLikes(){
 }
 
 function listarQtdComents(){
-    fetch("/feed/listarQtdLike").then(function (likes) {
+    fetch("/perfil/listarQtdLike", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idserver: id
+        }),
+    }).then(function (likes) {
         if (likes.ok) {
             likes.json().then(function (likes) {
                 console.log("Dados recebidos: ", JSON.stringify(likes));

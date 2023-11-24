@@ -11,6 +11,15 @@ red_senha_user.value = senha;
 var dtNasc2 = dtNasc.split('T');
 red_dt_nasc_user.value = dtNasc2[0];
 
+timeCoracao.innerHTML = time;
+
+const formularioComent = document.getElementById('form_redefinir');
+
+formularioComent.addEventListener('submit', (event) => {
+    event.preventDefault();
+    redefinir();
+})
+
 function redefinir() {
     var nomeIpt = document.getElementById('red_nome_user');
     var emailIpt = document.getElementById('red_email_user');
@@ -20,15 +29,24 @@ function redefinir() {
     var dtNasc1 = document.getElementById('red_dt_nasc_user').value;
     var imgPerfil = document.getElementById('img_perfil');
 
+    var usuario = [];
+
+    
     var nome = nomeIpt.value;
     var email = emailIpt.value;
     var senha = senhaIpt.value;
     var repetirSenha = repetirSenhaIpt.value;
+    
+    usuario.push(nome);
+    usuario.push(email);
+    usuario.push(senha);
+    usuario.push(repetirSenha);
+
 
     const formData = new FormData();
 
     formData.append('nome', nome);
-    formData.append('imgPerfil', imgPerfil.files[0]);
+    if(imgPerfil.files[0] != undefined) formData.append('imgPerfil', imgPerfil.files[0]);
     formData.append('id', id);
     formData.append('email', email);
     formData.append('senha', senha);
@@ -42,39 +60,42 @@ function redefinir() {
 
     var qtdErros = 0;
 
-    if(timezin == "Selecione o seu time"){
-        qtdErros += 1;
-    }
-    if (email == "" || !validEmail.test(email)) {
+    if (usuario[1] == "" || !validEmail.test(usuario[1])) {
         emailIpt.value = "";
         emailIpt.placeholder = "Email Inválido";
         qtdErros += 1;
     }
-    if (senha == "") {
+    if (usuario[2] == "") {
         senhaIpt.placeholder = "Digite uma senha!";
         qtdErro += 1;
     }
-    if (!validLow.test(senha) || !validUp.test(senha)) {
-        senha.value = "";
-        senha.placeholder = "A senha deve possuir letras maiuscúlas e minúsculas!";
+    if (!validLow.test(usuario[2]) || !validUp.test(usuario[2])) {
+        senhaIpt.value = "";
+        senhaIpt.placeholder = "A senha deve possuir letras maiuscúlas e minúsculas!";
         qtdErros += 1;
     }
-    if (!validNum.test(senha)) {
-        senha.value = "";
-        senha.placeholder = "A senha deve possuir números!";
+    if (!validNum.test(usuario[2])) {
+        senhaIpt.value = "";
+        senhaIpt.placeholder = "A senha deve possuir números!";
         qtdErros += 1;
-    } else if (senha <= 7) {
-        senha.value = "";
-        senha.placeholder = "A senha deve possuir mais de 8 caractéres!";
+    } else if (usuario[2] <= 7) {
+        senhaIpt.value = "";
+        senhaIpt.placeholder = "A senha deve possuir mais de 8 caractéres!";
         qtdErros += 1;
     }
-    if (senha.value != repetirSenha.value) {
-        repetirSenha.value = "";
-        repetirSenha.placeholder = "As senhas Não se repetem!";
+    
+    if (usuario[2] != usuario[3]) {
+        if(usuario[3] == ""){
+            qtdErros -= 1;
+        } else{
+            repetirSenhaIpt.value = "";
+            repetirSenhaIpt.placeholder = "As senhas Não se repetem!";
+        }
         qtdErros += 1;
     }
 
-    if (qtdErros == 0) {
+
+    if (qtdErros == 0 && imgPerfil.files[0] != undefined) {
         fetch("/configuracao/redefinir", {
             method: "POST",
             body: formData
@@ -92,6 +113,44 @@ function redefinir() {
                     resposta.json().then(json =>{
                         sessionStorage.IMG_USER = json.imgPerfil;
                     })
+
+                    window.location = "/configuracao";
+
+                } else{
+                    throw "Houve um erro ao tentar se cadastrar!";
+                }
+            })
+
+            .catch(function (resposta){
+                console.log(`#erro: ${resposta}`);
+            });
+
+            return false;
+    } else{
+        var id = sessionStorage.ID_USER;
+        fetch("/configuracao/redefinir2", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha,
+                dtNascServer: dtNasc,
+                timeServer: timezin,
+                idServer: id 
+            })
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    sessionStorage.EMAIL_USER = email;
+                    sessionStorage.NOME_USER = nome;
+                    sessionStorage.SENHA_USER = senha;
+                    sessionStorage.TIME_USER = timezin;
+                    sessionStorage.DTNASC_USER = dtNasc1;
 
                     window.location = "/configuracao";
 
@@ -127,4 +186,8 @@ function deletarConta(){
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     });
+}
+
+function fazerMudanca(){
+    mensagem_alerta.style.display = "flex";
 }

@@ -11,8 +11,11 @@ router.post("/redefinir", upload.single('imgPerfil'), function (req, res) {
     configController.redefinir(req, res);
 })
 
+router.post("/redefinir2", function (req, res) {
+    configController.redefinir2(req, res);
+})
+
 router.delete("/deletar/:id", function (req, res) {
-    console.log('f1');
     configController.deletar(req, res);
 });
 
