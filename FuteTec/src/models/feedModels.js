@@ -48,7 +48,7 @@ function dando1Like(post, id) {
 
 function listandoComentarios(idPost) {
   var instrucao = `
-    select u.nome, c.fkPost, c.fkUser, c.comentario as coment from comentarios as c join usuario as u on c.fkUser = u.idUser where c.fkPost = ${idPost} order by c.idComent ASC;
+    select u.nome, c.fkPost, c.fkUser, c.comentario as coment from comentarios as c join usuario as u on c.fkUser = u.idUser where c.fkPost = ${idPost} order by c.idComent DESC;
   `;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
