@@ -90,3 +90,18 @@ main{
 .grafico-evento:hover{
     opacity: 1;
 }
+
+.escudos {
+    position: fixed;
+    top: 15%;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+    gap: 15px;
+    background-color: #FF3C5F;
+    padding: 5px;
+    border-radius: 15px;
+}

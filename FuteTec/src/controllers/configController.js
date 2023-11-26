@@ -57,4 +57,41 @@ function deletar(req, res) {
         );
 }
 
-module.exports = { redefinir, redefinir2, deletar }
+function escudos(req, res){
+    var id = req.body.idServer;
+
+    configModels.escudos(id)
+        .then(resultado => {
+            res.status(200).json(resultado);
+            console.log(resultado)
+        }).catch(err => {
+            res.status(500).send(err);
+        });
+}
+
+function inserirEscudo(req, res){
+    var id = req.body.idServer;
+    var caminho = req.body.imgServer;
+
+    configModels.inserirEscudo(id, caminho)
+        .then(resultado => {
+            res.status(200).json(resultado);
+            console.log(resultado)
+        }).catch(err => {
+            res.status(500).send(err);
+        });
+}
+
+function deletarEscudo(req, res){
+    var idEscudo = req.body.escudo;
+
+    configModels.deletarEscudo(idEscudo)
+        .then(resultado => {
+            res.status(200).json(resultado);
+            console.log(resultado)
+        }).catch(err => {
+            res.status(500).send(err);
+        });
+}
+
+module.exports = { redefinir, redefinir2, deletar, escudos, inserirEscudo, deletarEscudo }

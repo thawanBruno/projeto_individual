@@ -19,4 +19,16 @@ router.delete("/deletar/:id", function (req, res) {
     configController.deletar(req, res);
 });
 
+router.post("/escudos", function (req, res){
+    configController.escudos(req, res);
+});
+
+router.post("/inserirEscudo", function (req, res){
+    configController.inserirEscudo(req, res);
+});
+
+router.post("/deletarEscudo", function (req, res){
+    configController.deletarEscudo(req, res);
+});
+
 module.exports = router;

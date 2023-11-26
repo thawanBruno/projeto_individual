@@ -24,4 +24,28 @@ function deletar(id) {
     return database.executar(instrucao);
 }
 
-module.exports = {redefinir, redefinir2, deletar}
+function escudos(id) {
+    var instrucao = `
+        SELECT imgEscudo, idEscudo FROM escudos WHERE fkUser = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function inserirEscudo(id, caminho) {
+    var instrucao = `
+        INSERT INTO escudos (imgEscudo, fkUser) VALUES ('${caminho}', ${id})
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function deletarEscudo(idEscudo) {
+    var instrucao = `
+        DELETE FROM escudos WHERE idEscudo = ${idEscudo}
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+module.exports = {redefinir, redefinir2, deletar, escudos, inserirEscudo, deletarEscudo }

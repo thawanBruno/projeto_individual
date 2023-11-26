@@ -1,3 +1,5 @@
+setTimeout(escudos, 300);
+
 var chat = 0;
 
 function mostrarChat() {
@@ -461,3 +463,40 @@ function enviarComentario(){
         }
     })
 }
+
+function escudos() {
+    escudos_usando.innerHTML = ``;
+    var id = sessionStorage.VAR_APOIO;
+
+    fetch("/configuracao/escudos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idServer: id
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                var tamanho = resposta.length;
+                var listaEscudos = document.getElementById('escudos_usando');
+
+                for (
+                    var cont = 0;
+                    cont < tamanho;
+                    cont += 1
+                ) {
+                    var dados = resposta[cont];
+
+                    listaEscudos.innerHTML += `
+                        <img src="./assets/images/${dados.imgEscudo}" width="50">
+                `;
+                }
+                qtdEscudos = cont;
+            });
+        }
+    });
+}
+

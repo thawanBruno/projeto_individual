@@ -2,7 +2,7 @@
 // var email = sessionStorage.EMAIL_USER;
 // var id = sessionStorage.ID_USER;
 // var senha = sessionStorage.SENHA_USER;
-// var time = sessionStorage.TIME_USER;
+var time = sessionStorage.TIME_USER;
 // var dtNasc = sessionStorage.DTNASC_USER;
 
 red_nome_user.value = nome;
@@ -20,6 +20,86 @@ formularioComent.addEventListener('submit', (event) => {
     redefinir();
 })
 
+if (time == "Santos") {
+    escudos_usar.innerHTML = `
+        <img src="./assets/images/santos_novo.png" width="50" onclick="inserirEscudo('santos_novo.png')">
+        <img src="./assets/images/santos_antigo.png" width="50" onclick="inserirEscudo('santos_antigo.png')">
+    `;
+}
+
+if (time == "Palmeiras") {
+    escudos_usar.innerHTML = `
+        <img src="./assets/images/palmeiras_novo.png" width="50" onclick="inserirEscudo('palmeiras_novo.png')">
+        <img src="./assets/images/palmeiras_antigo.png" width="50" onclick="inserirEscudo('palmeiras_antigo.png')">
+    `;
+}
+
+if (time == "São-Paulo") {
+    escudos_usar.innerHTML = `
+        <img src="./assets/images/sao_paulo_novo.png" width="50" onclick="inserirEscudo('sao_paulo_novo.png')">
+        <img src="./assets/images/sao_paulo_antigo.png" width="50" onclick="inserirEscudo('sao_paulo_antigo.png')">
+    `;
+}
+
+if (time == "Flamengo") {
+    escudos_usar.innerHTML = `
+        <img src="./assets/images/flamengo_novo.png" width="50" onclick="inserirEscudo('flamengo_novo.png')">
+        <img src="./assets/images/flamengo_antigo.png" width="50" onclick="inserirEscudo('flamengo_antigo.png')">
+    `;
+}
+
+if (time == "Corinthians") {
+    escudos_usar.innerHTML = `
+        <img src="./assets/images/corinthians_novo.png" width="50" onclick="inserirEscudo('corinthians_novo.png')">
+        <img src="./assets/images/corinthians_antigo.png" width="50" onclick="inserirEscudo('corinthians_antigo.png')">
+    `;
+}
+
+function inserirEscudo(caminho) {
+    var id = sessionStorage.ID_USER;
+
+    if(qtdEscudos < 2){
+        fetch("/configuracao/inserirEscudo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idServer: id,
+                imgServer: caminho
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                escudos();
+            }
+        });
+    } else{
+        mensagem_alerta.style.display = "flex"
+        mensagem_alerta.innerHTML = "Número de escudos excedido!"
+    }
+}
+
+function deletarEscudo(idEscudo) {
+    if(qtdEscudos > 1){
+        fetch("/configuracao/deletarEscudo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                escudo: idEscudo
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                escudos();
+            }
+        });
+    } else{
+        mensagem_alerta.style.display = "flex"
+        mensagem_alerta.innerHTML = "Você deve ter no mínimo 1 escudo!"
+    }
+}
+
 function redefinir() {
     var id = sessionStorage.ID_USER;
     var nomeIpt = document.getElementById('red_nome_user');
@@ -32,12 +112,12 @@ function redefinir() {
 
     var usuario = [];
 
-    
+
     var nome = nomeIpt.value;
     var email = emailIpt.value;
     var senha = senhaIpt.value;
     var repetirSenha = repetirSenhaIpt.value;
-    
+
     usuario.push(nome);
     usuario.push(email);
     usuario.push(senha);
@@ -47,7 +127,7 @@ function redefinir() {
     const formData = new FormData();
 
     formData.append('nome', nome);
-    if(imgPerfil.files[0] != undefined) formData.append('imgPerfil', imgPerfil.files[0]);
+    if (imgPerfil.files[0] != undefined) formData.append('imgPerfil', imgPerfil.files[0]);
     formData.append('id', id);
     formData.append('email', email);
     formData.append('senha', senha);
@@ -84,11 +164,11 @@ function redefinir() {
         senhaIpt.placeholder = "A senha deve possuir mais de 8 caractéres!";
         qtdErros += 1;
     }
-    
+
     if (usuario[2] != usuario[3]) {
-        if(usuario[3] == ""){
+        if (usuario[3] == "") {
             qtdErros -= 1;
-        } else{
+        } else {
             repetirSenhaIpt.value = "";
             repetirSenhaIpt.placeholder = "As senhas Não se repetem!";
         }
@@ -104,7 +184,7 @@ function redefinir() {
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    resposta.json().then(json =>{
+                    resposta.json().then(json => {
                         sessionStorage.EMAIL_USER = email;
                         sessionStorage.NOME_USER = nome;
                         sessionStorage.SENHA_USER = senha;
@@ -113,17 +193,17 @@ function redefinir() {
                         sessionStorage.IMG_USER = json.imgPerfil;
                     })
                     window.location = "/configuracao";
-                } else{
+                } else {
                     throw "Houve um erro ao tentar se cadastrar!";
                 }
             })
 
-            .catch(function (resposta){
+            .catch(function (resposta) {
                 console.log(`#erro: ${resposta}`);
             });
 
-            return false;
-    } else{
+        return false;
+    } else {
         fetch("/configuracao/redefinir2", {
             method: "POST",
             headers: {
@@ -135,7 +215,7 @@ function redefinir() {
                 senhaServer: senha,
                 dtNascServer: dtNasc,
                 timeServer: timezin,
-                idServer: id 
+                idServer: id
             })
         })
             .then(function (resposta) {
@@ -150,20 +230,20 @@ function redefinir() {
 
                     window.location = "/configuracao";
 
-                } else{
+                } else {
                     throw "Houve um erro ao tentar se cadastrar!";
                 }
             })
-            .catch(function (resposta){
+            .catch(function (resposta) {
                 console.log(`#erro: ${resposta}`);
             })
 
-            return false;
+        return false;
     }
 }
 
 
-function deletarConta(){
+function deletarConta() {
     var id = sessionStorage.ID_USER;
     fetch(`/configuracao/deletar/${id}`, {
         method: "DELETE",
@@ -184,6 +264,44 @@ function deletarConta(){
     return false;
 }
 
-function fazerMudanca(){
+function fazerMudanca() {
     mensagem_alerta.style.display = "flex";
+}
+
+var qtdEscudos = 0;
+
+function escudos() {
+    escudos_usando.innerHTML = ``;
+    var id = sessionStorage.ID_USER;
+
+    fetch("/configuracao/escudos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idServer: id
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                var tamanho = resposta.length;
+                var listaEscudos = document.getElementById('escudos_usando');
+
+                for (
+                    var cont = 0;
+                    cont < tamanho;
+                    cont += 1
+                ) {
+                    var dados = resposta[cont];
+
+                    listaEscudos.innerHTML += `
+                        <img src="./assets/images/${dados.imgEscudo}" width="50" onclick="deletarEscudo(${dados.idEscudo})">
+                `;
+                }
+                qtdEscudos = cont;
+            });
+        }
+    });
 }
