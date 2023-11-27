@@ -1,8 +1,8 @@
 var formularioCadastro = document.getElementById("form_cadastro");
 
 formularioCadastro.addEventListener('submit', (event) => {
-  event.preventDefault();
-  cadastrar();
+    event.preventDefault();
+    cadastrar();
 });
 
 function cadastrar() {
@@ -32,7 +32,7 @@ function cadastrar() {
         erros.innerHTML += `
         <h2>Email inválido!!!</h2>
     `;
-    erros.style.display = "flex";        
+        erros.style.display = "flex";
         qtdErros += 1;
         setTimeout(fecharErro, 5000);
     }
@@ -66,7 +66,7 @@ function cadastrar() {
         erros.innerHTML += `
         <h2>Senha precisa de no mínimo 7 caracteres!!!</h2>
     `;
-    erros.style.display = "flex";
+        erros.style.display = "flex";
         qtdErros += 1;
         setTimeout(fecharErro, 5000);
     }
@@ -75,16 +75,16 @@ function cadastrar() {
         erros.innerHTML += `
         <h2>As senhas não se repetem!!!</h2>
     `;
-    erros.style.display = "flex";
+        erros.style.display = "flex";
         qtdErros += 1;
         setTimeout(fecharErro, 5000);
     }
 
-    if(timezin == "Selecionar time"){
+    if (timezin == "Selecionar time") {
         erros.innerHTML += `
         <h2>Selecione um time!!!</h2>
     `;
-    erros.style.display = "flex";
+        erros.style.display = "flex";
         qtdErros += 1;
         setTimeout(fecharErro, 5000);
     }
@@ -126,6 +126,12 @@ function cadastrar() {
 
             .catch(function (resposta) {
                 console.log(`#erro: ${resposta}`);
+                erros.innerHTML += `
+        <h2>Email já está sendo utilizado!!!</h2>
+    `;
+                erros.style.display = "flex";
+                qtdErros += 1;
+                setTimeout(fecharErro, 5000);
             });
 
         return false;
