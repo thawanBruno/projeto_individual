@@ -1,3 +1,10 @@
+var formularioLogin = document.getElementById("form_login");
+
+formularioLogin.addEventListener('submit', (event) => {
+  event.preventDefault();
+  fazerLogin();
+});
+
 function fazerLogin(){
     var emailIpt = document.getElementById('login_user');
     var senhaIpt = document.getElementById('login_senha');
@@ -44,7 +51,12 @@ function fazerLogin(){
                     }, 1000)
                 })
             } else{
-
+                var erros = document.getElementById('erros_login');
+                erros.innerHTML = `
+                    <h2>Email ou senha incorretos!!!</h2>
+                `;
+                erros.style.display = "flex";
+                setTimeout(fecharErro, 5000);
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
@@ -52,9 +64,14 @@ function fazerLogin(){
                 });
             }
         }).catch(function(erro){
-            console.log(erro)
+            console.log(erro);
         })
         return false
     }
 
+}
+
+function fecharErro(){
+    var erros = document.getElementById('erros_login');
+    erros.style.display = "none";
 }

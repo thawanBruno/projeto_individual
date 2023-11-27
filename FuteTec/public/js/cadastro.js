@@ -1,4 +1,13 @@
+var formularioCadastro = document.getElementById("form_cadastro");
+
+formularioCadastro.addEventListener('submit', (event) => {
+  event.preventDefault();
+  cadastrar();
+});
+
 function cadastrar() {
+    var erros = document.getElementById('erros_login');
+    erros.innerHTML = "";
     var nomeIpt = document.getElementById('nome-cadastro');
     var emailIpt = document.getElementById('email-cadastro');
     var timezin = document.getElementById('time-cadastro').value;
@@ -20,31 +29,64 @@ function cadastrar() {
 
     if (email == "" || !validEmail.test(email)) {
         emailIpt.value = "";
-        emailIpt.placeholder = "Email Inválido";
+        erros.innerHTML += `
+        <h2>Email inválido!!!</h2>
+    `;
+    erros.style.display = "flex";        
         qtdErros += 1;
+        setTimeout(fecharErro, 5000);
     }
     if (senha == "") {
-        senhaIpt.placeholder = "Digite uma senha!";
-        qtdErro += 1;
+        qtdErros += 1;
+        erros.innerHTML += `
+            <h2>Senha em Branco!!!</h2>
+        `;
+        erros.style.display = "flex";
+        setTimeout(fecharErro, 5000);
     }
     if (!validLow.test(senha) || !validUp.test(senha)) {
         senha.value = "";
-        senha.placeholder = "A senha deve possuir letras maiuscúlas e minúsculas!";
+        erros.innerHTML += `
+        <h2>Senha precisa de letras<br>maiúsculas e minúsculas!!!</h2>
+    `;
+        erros.style.display = "flex";
         qtdErros += 1;
+        setTimeout(fecharErro, 5000);
     }
     if (!validNum.test(senha)) {
         senha.value = "";
-        senha.placeholder = "A senha deve possuir números!";
+        erros.innerHTML += `
+        <h2>Senha precisa de números!!!</h2>
+    `;
+        erros.style.display = "flex";
         qtdErros += 1;
+        setTimeout(fecharErro, 5000);
     } else if (senha <= 7) {
         senha.value = "";
-        senha.placeholder = "A senha deve possuir mais de 8 caractéres!";
+        erros.innerHTML += `
+        <h2>Senha precisa de no mínimo 7 caracteres!!!</h2>
+    `;
+    erros.style.display = "flex";
         qtdErros += 1;
+        setTimeout(fecharErro, 5000);
     }
     if (senha.value != repetirSenha.value) {
         repetirSenha.value = "";
-        repetirSenha.placeholder = "As senhas Não se repetem!";
+        erros.innerHTML += `
+        <h2>As senhas não se repetem!!!</h2>
+    `;
+    erros.style.display = "flex";
         qtdErros += 1;
+        setTimeout(fecharErro, 5000);
+    }
+
+    if(timezin == "Selecionar time"){
+        erros.innerHTML += `
+        <h2>Selecione um time!!!</h2>
+    `;
+    erros.style.display = "flex";
+        qtdErros += 1;
+        setTimeout(fecharErro, 5000);
     }
 
     if (qtdErros == 0) {
@@ -77,15 +119,15 @@ function cadastrar() {
                     repetirSenha.value = "";
                     dtNasc = "";
                     time = "";
-                } else{
+                } else {
                     throw "Houve um erro ao tentar se cadastrar!";
                 }
             })
 
-            .catch(function (resposta){
+            .catch(function (resposta) {
                 console.log(`#erro: ${resposta}`);
             });
 
-            return false;
+        return false;
     }
 }
