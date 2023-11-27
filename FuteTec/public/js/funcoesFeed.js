@@ -24,9 +24,9 @@ function verificarPagina() {
   else window.location = '/seguidor';
 }
 
-const formularioComent = document.getElementById("form_comentario");
+var formularioComent = document.getElementById("form_comentario");
 
-formularioComent.addEventListener("submit", (event) => {
+formularioComent.addEventListener('submit', (event) => {
   event.preventDefault();
   enviarComentario();
 });
@@ -57,7 +57,7 @@ function carregarFeed() {
                             </a>
                         </li>
                         <li>
-                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios()">
+                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios(); mostrarChat();">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
                                     <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
@@ -95,7 +95,7 @@ function carregarFeed() {
                             </a>
                         </li>
                         <li>
-                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios()">
+                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios(); mostrarChat();">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
                                     <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
@@ -315,6 +315,7 @@ function enviarComentario() {
     }),
   }).then(function (likes) {
     if (likes.ok) {
+      comentario_eu.value = ``;
       setTimeout(abrirComentarios, 100);
     }
   });

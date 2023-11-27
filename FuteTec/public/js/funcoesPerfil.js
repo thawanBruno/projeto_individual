@@ -3,22 +3,22 @@ setTimeout(escudos, 300);
 var chat = 0;
 
 function mostrarChat() {
-  if (chat == 0) {
-    caixa_comentario.style.display = "flex";
-    mostrar_chat.innerHTML = `
+    if (chat == 0) {
+        caixa_comentario.style.display = "flex";
+        mostrar_chat.innerHTML = `
   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="45" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m10 10l4 4m0-4l-4 4m2 7a9 9 0 1 0-9-9c0 1.44.338 2.8.94 4.007c.453.911-.177 2.14-.417 3.037a1.17 1.17 0 0 0 1.433 1.433c.897-.24 2.126-.87 3.037-.416A8.964 8.964 0 0 0 12 21Z"/></svg>
   `;
-    chat = 1;
-  } else {
-    caixa_comentario.style.display = "none";
-    mostrar_chat.innerHTML = `
+        chat = 1;
+    } else {
+        caixa_comentario.style.display = "none";
+        mostrar_chat.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="35" height="45" viewBox="0 0 24 24">
         <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
           d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
       </svg>
     `;
-    chat = 0;
-  }
+        chat = 0;
+    }
 }
 
 var id = sessionStorage.ID_USER;
@@ -28,23 +28,23 @@ const formularioComent = document.getElementById('form_comentario');
 formularioComent.addEventListener('submit', (event) => {
     event.preventDefault();
     enviarComentario();
-})
+});
 
 function carregarQtdSeguidores() {
     fetch("/seguidor/seguidores", {
         method: "POST",
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             idserver: id
         }),
-    }).then(function (resposta){
-        if(resposta.ok) {
+    }).then(function (resposta) {
+        if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 var dados = resposta[0];
-            
+
                 document.getElementById('qtd_seguidores').innerText = dados.qtdSeguidores;
             });
             carregarQtdSeguindo()
@@ -55,18 +55,18 @@ function carregarQtdSeguidores() {
 function carregarQtdSeguindo() {
     fetch("/seguidor/seguindo", {
         method: "POST",
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             idserver: id
         }),
-    }).then(function (resposta){
-        if(resposta.ok) {
+    }).then(function (resposta) {
+        if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 var dados = resposta[0];
-                
+
                 document.getElementById('qtd_seguindo').innerText = dados.qtdSeguindo;
             });
             carregarFeedPerfil()
@@ -74,21 +74,21 @@ function carregarQtdSeguindo() {
     })
 }
 
-function verificarSeguidor(){
+function verificarSeguidor() {
     fetch("/seguidor/seguindo", {
         method: "POST",
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             idserver: id
         }),
-    }).then(function (resposta){
-        if(resposta.ok) {
+    }).then(function (resposta) {
+        if (resposta.ok) {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
                 var dados = resposta[0];
-                
+
                 document.getElementById('qtd_seguindo').innerText = dados.qtdSeguindo;
             });
             carregarFeedPerfil()
@@ -116,11 +116,12 @@ function carregarFeedPerfil() {
                     cont = 0;
                     cont < resposta.length;
                     cont += 1
-                    ) {
-                        var feed = document.getElementById('postagens');
-                        var publicacoes = resposta[cont];
+                ) {
+                    var feed = document.getElementById('postagens');
+                    var publicacoes = resposta[cont];
 
-                    feed.innerHTML += `
+                    if(publicacoes.imgPost != "null"){
+                        feed.innerHTML += `
                     <div class="post">
                     <ul class="ucc">
                         <li>
@@ -136,7 +137,7 @@ function carregarFeedPerfil() {
                             </a>
                         </li>
                         <li>
-                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios()">
+                            <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios(); mostrarChat()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
                                     <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
@@ -157,6 +158,42 @@ function carregarFeedPerfil() {
                     </div>
                 </div>
                     `;
+                    } else{
+                        feed.innerHTML += `
+                        <div class="post">
+                        <ul class="ucc">
+                            <li>
+                                <a>
+                                    <img src="./assets/imgsPerfil/${publicacoes.imgPerfil}"
+                                        class="img-usuario" style="width: 45px; margin-bottom: 15px;">
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="deLike = Number(${publicacoes.idPost});verificarLike()">
+                                    <img src="assets/icon/soccer-ball.svg" width="45" id="like${publicacoes.idPost}">
+                                    <p id="qtdLike${publicacoes.idPost}" class="qtd-interacao">0</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a onclick="idComentarios = Number(${publicacoes.idPost});abrirComentarios(); mostrarChat()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24">
+                                        <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.89 1 4.127L3 21l4.873-1c1.236.639 2.64 1 4.127 1Z" />
+                                    </svg>
+                                    <p  id="qtdComent${publicacoes.idPost}" class="qtd-interacao">0</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="conteudo">
+                            <h2>${publicacoes.nome}</h2>
+            
+                            <legend>
+                                ${publicacoes.legenda}
+                            </legend>
+                        </div>
+                    </div>
+                        `;  
+                    }
                 }
                 docQtdPosts.innerHTML = cont;
                 setTimeout(likes1, 50);
@@ -201,7 +238,7 @@ function likes1() {
     })
 }
 
-function listarQtdLikes(){
+function listarQtdLikes() {
     fetch("/perfil/listarQtdComents", {
         method: "POST",
         headers: {
@@ -230,7 +267,7 @@ function listarQtdLikes(){
     })
 }
 
-function listarQtdComents(){
+function listarQtdComents() {
     fetch("/perfil/listarQtdLike", {
         method: "POST",
         headers: {
@@ -354,11 +391,11 @@ function abrirComentarios() {
                     `;
                 }
                 document.getElementById(`qtdComent${idComentarios}`).innerText = cont;
-                
+
             })
-        } 
+        }
     }).catch(err => {
-        console.log(err); 
+        console.log(err);
         comentarios.innerHTML = ``;
 
         comentarios.innerHTML += `
@@ -371,7 +408,7 @@ function abrirComentarios() {
     })
 }
 
-function enviarComentario(){
+function enviarComentario() {
     var id = sessionStorage.ID_USER;
     var comentario = document.getElementById('comentario_eu').value;
 
