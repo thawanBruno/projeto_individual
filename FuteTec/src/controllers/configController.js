@@ -82,16 +82,4 @@ function inserirEscudo(req, res){
         });
 }
 
-function deletarEscudo(req, res){
-    var idEscudo = req.body.escudo;
-
-    configModels.deletarEscudo(idEscudo)
-        .then(resultado => {
-            res.status(200).json(resultado);
-            console.log(resultado)
-        }).catch(err => {
-            res.status(500).send(err);
-        });
-}
-
-module.exports = { redefinir, redefinir2, deletar, escudos, inserirEscudo, deletarEscudo }
+module.exports = { redefinir, redefinir2, deletar, escudos, inserirEscudo }

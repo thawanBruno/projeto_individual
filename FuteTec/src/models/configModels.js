@@ -34,18 +34,10 @@ function escudos(id) {
 
 function inserirEscudo(id, caminho) {
     var instrucao = `
-        INSERT INTO escudos (imgEscudo, fkUser) VALUES ('${caminho}', ${id})
+        CALL novoEscudo('${caminho}', ${id})
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function deletarEscudo(idEscudo) {
-    var instrucao = `
-        DELETE FROM escudos WHERE idEscudo = ${idEscudo}
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-module.exports = {redefinir, redefinir2, deletar, escudos, inserirEscudo, deletarEscudo }
+module.exports = {redefinir, redefinir2, deletar, escudos, inserirEscudo }

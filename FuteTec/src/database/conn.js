@@ -16,8 +16,8 @@ function executar(instrucao) {
         return new Promise(function (resolve, reject) {
             var conexao = mysql.createConnection({
                 host: 'localhost',
-                user: 'aluno',
-                password: 'sptech',
+                user: 'root',
+                password: '',
                 database: 'futetec'
             })
             conexao.connect();

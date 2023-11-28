@@ -57,47 +57,20 @@ if (time == "Corinthians") {
 
 function inserirEscudo(caminho) {
     var id = sessionStorage.ID_USER;
-
-    if(qtdEscudos < 2){
-        fetch("/configuracao/inserirEscudo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idServer: id,
-                imgServer: caminho
-            })
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                escudos();
-            }
-        });
-    } else{
-        mensagem_alerta.style.display = "flex"
-        mensagem_alerta.innerHTML = "Número de escudos excedido!"
-    }
-}
-
-function deletarEscudo(idEscudo) {
-    if(qtdEscudos > 1){
-        fetch("/configuracao/deletarEscudo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                escudo: idEscudo
-            })
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                escudos();
-            }
-        });
-    } else{
-        mensagem_alerta.style.display = "flex"
-        mensagem_alerta.innerHTML = "Você deve ter no mínimo 1 escudo!"
-    }
+    fetch("/configuracao/inserirEscudo", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            idServer: id,
+            imgServer: caminho
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            escudos();
+        }
+    });
 }
 
 function redefinir() {
@@ -297,7 +270,7 @@ function escudos() {
                     var dados = resposta[cont];
 
                     listaEscudos.innerHTML += `
-                        <img src="./assets/images/${dados.imgEscudo}" width="50" onclick="deletarEscudo(${dados.idEscudo})">
+                        <img src="./assets/images/${dados.imgEscudo}" width="50">
                 `;
                 }
                 qtdEscudos = cont;

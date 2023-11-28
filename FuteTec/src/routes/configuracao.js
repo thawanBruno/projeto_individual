@@ -27,8 +27,4 @@ router.post("/inserirEscudo", function (req, res){
     configController.inserirEscudo(req, res);
 });
 
-router.post("/deletarEscudo", function (req, res){
-    configController.deletarEscudo(req, res);
-});
-
 module.exports = router;
