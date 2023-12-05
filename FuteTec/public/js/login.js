@@ -12,19 +12,7 @@ function fazerLogin(){
     var email = emailIpt.value;
     var senha = senhaIpt.value;
 
-    var qtdErros = 0;
 
-    if (email == ""){
-        emailIpt.placeholder = "Digite o seu Email!!!";
-        qtdErros += 1;
-    }
-
-    if(senha == ""){
-        emailIpt.placeholder = "Digite a sua Senha!!!";
-        qtdErros += 1;
-    }
-
-    if(qtdErros == 0){
         fetch("/index/login", {
             method: "POST",
             headers: {
@@ -67,7 +55,7 @@ function fazerLogin(){
             console.log(erro);
         })
         return false
-    }
+    
 
 }
 

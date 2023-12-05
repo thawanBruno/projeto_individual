@@ -20,22 +20,15 @@ function cadastrar() {
     var senha = senhaIpt.value;
     var repetirSenha = repetirSenhaIpt.value;
 
-    const validNum = /[0-9]/;
-    const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const validLow = /[a-z]/;
-    const validUp = /[A-Z]/;
-
-    var qtdErros = 0;
-
-    if (email == "" || !validEmail.test(email)) {
+    if (email == "") {
         emailIpt.value = "";
         erros.innerHTML += `
-        <h2>Email inválido!!!</h2>
-    `;
+            <h2>Email inválido!!!</h2>
+        `;
         erros.style.display = "flex";
-        qtdErros += 1;
         setTimeout(fecharErro, 5000);
     }
+
     if (senha == "") {
         qtdErros += 1;
         erros.innerHTML += `
@@ -43,41 +36,27 @@ function cadastrar() {
         `;
         erros.style.display = "flex";
         setTimeout(fecharErro, 5000);
+        return false;
     }
-    if (!validLow.test(senha) || !validUp.test(senha)) {
+
+    if (senha.length < 8) {
         senha.value = "";
         erros.innerHTML += `
-        <h2>Senha precisa de letras<br>maiúsculas e minúsculas!!!</h2>
+        <h2>Senha precisa de no mínimo 8 caracteres!!!</h2>
     `;
         erros.style.display = "flex";
-        qtdErros += 1;
         setTimeout(fecharErro, 5000);
+        return false;
     }
-    if (!validNum.test(senha)) {
-        senha.value = "";
-        erros.innerHTML += `
-        <h2>Senha precisa de números!!!</h2>
-    `;
-        erros.style.display = "flex";
-        qtdErros += 1;
-        setTimeout(fecharErro, 5000);
-    } else if (senha <= 7) {
-        senha.value = "";
-        erros.innerHTML += `
-        <h2>Senha precisa de no mínimo 7 caracteres!!!</h2>
-    `;
-        erros.style.display = "flex";
-        qtdErros += 1;
-        setTimeout(fecharErro, 5000);
-    }
-    if (senha.value != repetirSenha.value) {
+
+    if (senha != repetirSenha) {
         repetirSenha.value = "";
         erros.innerHTML += `
-        <h2>As senhas não se repetem!!!</h2>
+            <h2>As senhas não se repetem!!!</h2>
     `;
         erros.style.display = "flex";
-        qtdErros += 1;
         setTimeout(fecharErro, 5000);
+        return false;
     }
 
     if (timezin == "Selecionar time") {
@@ -85,11 +64,10 @@ function cadastrar() {
         <h2>Selecione um time!!!</h2>
     `;
         erros.style.display = "flex";
-        qtdErros += 1;
         setTimeout(fecharErro, 5000);
+        return false;
     }
 
-    if (qtdErros == 0) {
         fetch("/index/cadastrar", {
             method: "POST",
             headers: {
@@ -136,4 +114,3 @@ function cadastrar() {
 
         return false;
     }
-}

@@ -107,49 +107,26 @@ function redefinir() {
     formData.append('dtNasc', dtNasc1)
     formData.append('time', timezin);
 
-    const validNum = /[0-9]/;
-    const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const validLow = /[a-z]/;
-    const validUp = /[A-Z]/;
 
-    var qtdErros = 0;
-
-    if (usuario[1] == "" || !validEmail.test(usuario[1])) {
-        emailIpt.value = "";
-        emailIpt.placeholder = "Email Inválido";
-        qtdErros += 1;
-    }
     if (usuario[2] == "") {
         senhaIpt.placeholder = "Digite uma senha!";
-        qtdErro += 1;
+        return false;
     }
-    if (!validLow.test(usuario[2]) || !validUp.test(usuario[2])) {
-        senhaIpt.value = "";
-        senhaIpt.placeholder = "A senha deve possuir letras maiuscúlas e minúsculas!";
-        qtdErros += 1;
-    }
-    if (!validNum.test(usuario[2])) {
-        senhaIpt.value = "";
-        senhaIpt.placeholder = "A senha deve possuir números!";
-        qtdErros += 1;
-    } else if (usuario[2] <= 7) {
+
+    if (usuario[2] <= 7) {
         senhaIpt.value = "";
         senhaIpt.placeholder = "A senha deve possuir mais de 8 caractéres!";
-        qtdErros += 1;
+        return false;
     }
 
-    if (usuario[2] != usuario[3]) {
-        if (usuario[3] == "") {
-            qtdErros -= 1;
-        } else {
+    if (usuario[2] != usuario[3] && usuario[3] != "") {
             repetirSenhaIpt.value = "";
             repetirSenhaIpt.placeholder = "As senhas Não se repetem!";
-        }
-        qtdErros += 1;
+            return false;
     }
 
 
-    if (qtdErros == 0 && imgPerfil.files[0] != undefined) {
+    if (imgPerfil.files[0] != undefined) {
         fetch("/configuracao/redefinir", {
             method: "POST",
             body: formData
